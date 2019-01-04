@@ -1,129 +1,132 @@
-@font-face{
-    font-family: TimeBurner;
-    src: url('timeburnernormal.ttf');
+@font-face {
+    font-family: 'nextfont';
+    src: url('https://fractava.com/fonts/thenextfont-webfont.woff2') format('woff2'),
+         url('https://fractava.com/fonts/thenextfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-@font-face{
-    font-family: TimeBurnerBold;
-    src: url('timeburnerbold.ttf');
+@font-face {
+    font-family: 'timeburner';
+	src: url('https://fractava.com/fonts/timeburnerbold-webfont.woff2') format('woff2'),
+         url('https://fractava.com/fonts/timeburnerbold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background-color: black;
+}
+
+h1 {
+	font-family: 'nextfont';
+	font-size: 96px;
+	text-align: center;
+	margin: 0;
+	padding: 48px;
+}
+
+a {
+	text-decoration: none;
+	font-family: 'timeburner';
+	/*font-size: 32px;*/
+	margin: 0;
+	text-align: center;
+	color: gray;
+}
+
+p {
+	font-family: 'timeburner';
+	/*font-size: 32px;*/
+	margin: 16px;
+	text-align: center;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    display: inline-block;
-    top: 0;
-	left: 0;
-    width: 100%;
-    background-color: #2d2d2d;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
 }
 
 li {
-    display: inline;
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding:8px 16px;
-    text-decoration: none;
-}
-
-.active {
-    background-color: #CD0000;
-}
-
-li a:hover {
-    color: #dddddd;
-}
-
-/*img {
-    max-width: 100%;
-    height: auto;
-}*/
-
-/*.container {
-  position: relative;
-  width: 25%;
-}
-
-.container p{
-   margin: 0;
-   position: absolute;                2 
-   top: 50%;                          3 
-   transform: translate(0, -50%)
-}
-
-.image {
-  display: block;
-  width: auto;
-  height: auto;
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #CD0000;
-  overflow: hidden;
-  width: 50%;
-  height: 0%;
-  transition: .5s ease;
-}
-.bigcont {
-  display: inline-block;
-}
-.image {
-  float: left;
-  width: 50%;
-}
-.imago {
-  width: 25%;
-}
-.container:hover .overlay {
-  height: 100%;
-  width: 50%;
-}*/
-
-/*.text {
-  white-space: nowrap; 
-  color: white;
-  font-size: 34px;
-  position: absolute;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}*/
-
-
-body {
-    background-color: #424242;
-    background-size: cover; 
-    background-position: center;
-    background-attachment: fixed;
-}
-
-.size{
-	width: 100%;
+	margin: 0;
+	padding: 0;
 	height: auto;
-    background-color: #2d2d2d;
-	
+	width: auto;
+	display: inline;
 }
 
-.size-hover {
-/*position:relative;
-transform: translate(0, -50%)
-animation:animatebottom 0.2s}
-@keyframes animatebottom{
-from{bottom:-20px;opacity:0}
-to{bottom:0;opacity:1}	*/
-  position: relative;
-  background-color: #CD0000;
+#rnav {
+	position: fixed;
+	width: auto;
+	font-size: 72px;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 1%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#rnav ul {
+	float: right;
+	list-style-type: none;
+	margin-left: auto;
+	margin-right: 32px;
+	padding-left: 0;
+}
+
+#rnav ul a {
+	font-size: 72px;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-family: 'nextfont';
+	color: gray;
+}
+
+.sidebutton {
+	transition: all .1s ease-in-out;
+}
+
+.sidebutton:hover {
+	transform: scale(1.2);
+}
+
+.nextbutton {
+	float: center;
+	text-align: center;
+    position: absolute;
+    bottom: 0;
+	width: 100%;
+	margin: auto;
+	transition: all .1s ease-in-out;
+	font-size: 112px;
+}
+
+.nextbutton a {
+	font-size: 56px;
+}
+
+.nextbutton:hover {
+}
+
+.scrolling-box {
+  display: block;
+  height: 1000px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  text-align: center;
+  width: 100%;
+}
+
+section {
+	height: 100vh;
 }

@@ -13,7 +13,6 @@ ul {
     margin: 0;
     padding: 0;
     position: fixed;
-    display: inline-block;
     top: 0;
 	left: 0;
     width: 100%;
@@ -38,23 +37,23 @@ li a {
 }
 
 li a:hover {
-    color: #dddddd;
+    color: lightgray;
 }
 
-/*img {
+img {
     max-width: 100%;
     height: auto;
-}*/
+}
 
-/*.container {
+.container {
   position: relative;
   width: 25%;
 }
 
 .container p{
-   margin: 0;
-   position: absolute;                2 
-   top: 50%;                          3 
+	margin: 0;
+   position: absolute;               /* 2 */
+   top: 50%;                         /* 3 */
    transform: translate(0, -50%)
 }
 
@@ -71,26 +70,16 @@ li a:hover {
   right: 0;
   background-color: #CD0000;
   overflow: hidden;
-  width: 50%;
-  height: 0%;
+  width: 100%;
+  height: 0;
   transition: .5s ease;
 }
-.bigcont {
-  display: inline-block;
-}
-.image {
-  float: left;
-  width: 50%;
-}
-.imago {
-  width: 25%;
-}
+
 .container:hover .overlay {
   height: 100%;
-  width: 50%;
-}*/
+}
 
-/*.text {
+.text {
   white-space: nowrap; 
   color: white;
   font-size: 34px;
@@ -100,7 +89,7 @@ li a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-}*/
+}
 
 
 body {
@@ -110,20 +99,5 @@ body {
     background-attachment: fixed;
 }
 
-.size{
-	width: 100%;
-	height: auto;
-    background-color: #2d2d2d;
-	
-}
 
-.size-hover {
-/*position:relative;
-transform: translate(0, -50%)
-animation:animatebottom 0.2s}
-@keyframes animatebottom{
-from{bottom:-20px;opacity:0}
-to{bottom:0;opacity:1}	*/
-  position: relative;
-  background-color: #CD0000;
-}
+

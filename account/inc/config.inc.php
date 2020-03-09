@@ -1,6 +1,4 @@
 <?php
- 
-//Tragt hier eure Verbindungsdaten zur Datenbank ein
 $db_host = 'localhost';
 $db_name = 'fractemtron';
 $db_user = 'fractemtron';

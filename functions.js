@@ -1,7 +1,7 @@
-var sections = [\"first_section\",\"second_section\"]
+var sections = ["first_section","second_section"]
 
 function ScrollTo(id) {
-  id = id.replace(\"link\", \"\$('html,body').animate({scrollTop: $(\"#\" + id).offset().top}, 'slow');
+  id = id.replace("link", $('html,body').animate({scrollTop: $('#' + id).offset().top}, 'slow'));
 }
 $( document ).ready(function() {
 	setUpNavPoints();

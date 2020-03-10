@@ -4,13 +4,14 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/fonts.css">
 	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-	<script src='/js/functions.js'></script>
+	<script src='/js/main.js'></script>
+	<script src='/js/sectionNavigation.js'></script>
 	<title>FRACTAVA</title>
 </head>
 <body>
 	<section style = 'background-color: black;' class="nav_section FullHeight" data-section-id="0">
 		<p id="fractava_name_text">FRACTAVA</p>
-		<p class="scroll text_white" onclick="ScrollTo(1);">▼</p>
+		<p class="scroll text_white" onclick="ScrollToSection(1);">▼</p>
 	</section>
 	<section style = 'background-color: white;' class="nav_section FullHeight" data-section-id="1">
 		<p class="text_black">Diese Seite befindet sich zur Zeit im Umbau</p>

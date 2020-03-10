@@ -1,6 +1,7 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . "/inc/autoload.inc.php");
 
-use config\configManager;
+use database\simpleDatabaseQuery;
 
-$config = configManager::getConfig();
+//$query = new simpleDatabaseQuery("SELECT * FROM Blog;",array());
+//var_dump($query->fetch());

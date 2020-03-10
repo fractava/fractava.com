@@ -1,9 +1,12 @@
-var sections = ["first_section","second_section"]
-
-function ScrollTo(id) {
-  id = id.replace("link", $('html,body').animate({scrollTop: $('#' + id).offset().top}, 'slow'));
+function ScrollToElement(element) {
+  //id = id.replace("link", 
+  $('html,body').animate({scrollTop: $(element).offset().top}, 'slow');
+  //);
 }
-$( document ).ready(function() {
+function ScrollTo(id) {
+    ScrollToElement($(getNavSections()[id]));
+}
+$(document).ready(function() {
 	setUpNavPoints();
 	updateNavColors();
 });
@@ -11,8 +14,8 @@ $(window).scroll(function() {
 	updateNavColors();
 });
 
-function nav_sections_length(){
-	return document.getElementsByClassName('nav_section').length;
+function getNavSections(){
+	return $(".nav_section");
 }
 
 function invertColors(color){
@@ -23,25 +26,36 @@ function invertColors(color){
 	}
 }
 function updateNavColors() {
-	for(var section = 0;section<=nav_sections_length()-1;section++){
-		var background = document.getElementsByClassName('nav_section')[section].style.backgroundColor;
-		if(collidesWith($( '.nav_point' )[section],$( '.nav_section' )[section])){
-			document.getElementsByClassName('nav_point')[section].style.color = invertColors(background);
+	for(let section of getNavSections()){
+	    let sectionId = section.getAttribute("data-section-id");
+	    let navPoint = $( '.navPoint[data-section-id=' + sectionId + ']' )[0];
+		let sectionBackground = section.style.backgroundColor;
+		
+		console.log(sectionId);
+		console.log(sectionBackground);
+		console.log(navPoint);
+		
+		if(collidesWith(navPoint,section)){
+		    console.log("collides");
+			navPoint.style.color = invertColors(sectionBackground);
 		}else{
-			document.getElementsByClassName('nav_point')[section].style.color = background;
+		    console.log("doesnt collide");
+			navPoint.style.color = sectionBackground;
 		}
 	}
 }
 function setUpNavPoints(){
 	var table = document.createElement('TABLE');
 	table.setAttribute('id', 'lnav');
-	for(var section = 0;section<=nav_sections_length()-1;section++){
+	for(let section of getNavSections()){
 		var tr = document.createElement('TR');
 		var th = document.createElement('TH');
 		var p = document.createElement('P');
 
-		p.setAttribute('class', 'nav_point');
+		p.setAttribute('class', 'navPoint');
+		p.setAttribute('data-section-id', section.getAttribute("data-section-id"));
 		p.appendChild(document.createTextNode('•'));
+		$(p).click(function(){ScrollTo(section.getAttribute("data-section-id"))});
 		th.appendChild(p);
 		tr.appendChild(th);
 		table.appendChild(tr);

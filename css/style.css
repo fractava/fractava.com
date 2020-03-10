@@ -1,0 +1,51 @@
+body{
+    margin: 0px;
+}
+.FullHeight{
+    height: 100%;
+}
+.white{
+    background-color: white;
+}
+.black{
+    background-color: black;
+}
+.text_white{
+    color: white;
+}
+.text_black{
+    color: black;
+}
+.scroll{
+    font-size: 56px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    text-align: center;
+}
+.nav_point{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 4px;
+}
+#footer_section{
+    padding: 10px;
+}
+#lnav{
+    position: fixed;
+    width: auto;
+    font-size: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#fractava_name_text{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    font-family: nextfont;
+    font-size: 96px;
+	text-align: center;
+	margin: 0;
+}

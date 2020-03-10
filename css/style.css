@@ -10,10 +10,10 @@ body{
 .black{
     background-color: black;
 }
-.text_white{
+.textWhite{
     color: white;
 }
-.text_black{
+.textBlack{
     color: black;
 }
 .scroll{
@@ -23,12 +23,12 @@ body{
     left: 50%;
     text-align: center;
 }
-.nav_point{
+.navPoint{
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 4px;
 }
-#footer_section{
+#footerSection{
     padding: 10px;
 }
 #navPointContainer{
@@ -38,7 +38,7 @@ body{
     top: 50%;
     transform: translateY(-50%);
 }
-#fractava_name_text{
+#fractavaNameText{
     position: absolute;
     left: 50%;
     top:50%;

@@ -65,7 +65,7 @@ function invertColors(color){
 	}
 }
 function getNavSections(){
-	return $(".nav_section");
+	return $(".navSection");
 }
 function collidesWith (element1, element2) {
   var Element1 = {};

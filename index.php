@@ -10,11 +10,14 @@
 	<link rel="stylesheet" href="/css/cookieAlert.css">
 	
 	<script src='/js/libaries/jquery.min.js'></script>
+	<script src='/js/libaries/mobile-detect.js'></script>
 	
 	<script src='/js/main.js'></script>
 	<script src='/js/sectionNavigation.js'></script>
 	<script src='/js/functions.js'></script>
 	<script src='/js/cookieAlert.js'></script>
+	<script src='/js/mobileDetect.js'></script>
+	
 	<title>FRACTAVA</title>
 </head>
 <body>

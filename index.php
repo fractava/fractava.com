@@ -1,6 +1,6 @@
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="shortcut icon" type="image/png" href="/assets/img/logo/logo_black.png"/>
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/fonts.css">
 	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>

@@ -1,21 +1,21 @@
 $(document).ready(function() {
-    check_cookie_permission();
+    checkCookiePermission();
 });
-function check_cookie_permission(){
-  if(getCookie("cookie_level") == ""){
+function checkCookiePermission(){
+  if(getCookie("cookieLevel") == ""){
     $("#cookieAlert").show();
   }else{
-    cookies_accepted();
+    cookiesAccepted();
   }
 }
-function cookies_accepted(){
-  run_google_analytics();
+function cookiesAccepted(){
+  runGoogleAnalytics();
 }
-function accept_cookies(){
-    setCookie("cookie_level","1",400);
-    cookies_accepted();
+function acceptCookies(){
+    setCookie("cookieLevel","1",400);
+    cookiesAccepted();
     $("#cookieAlert").hide();
 }
-function decline_cookies(){
+function declineCookies(){
     $("#cookieAlert").hide();
 }

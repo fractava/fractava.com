@@ -21,8 +21,8 @@
     <div id="cookieAlert">
         <p id="cookieAlertHeadline">Darf diese Website Cookies verwenden?</p>
         <div id="cookieAlertButtonConatainer">
-            <button class="cookieAlertButton" onclick="accept_cookies()">Ja</button>
-            <button class="cookieAlertButton" onclick="decline_cookies()">Nein</button>
+            <button class="cookieAlertButton" onclick="acceptCookies()">Ja</button>
+            <button class="cookieAlertButton" onclick="declineCookies()">Nein</button>
         </div>
     </div>
 

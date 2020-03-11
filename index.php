@@ -13,6 +13,7 @@
 	<script src='/js/libaries/mobile-detect.js'></script>
 	
 	<script src='/js/main.js'></script>
+	<script src='/js/network.js'></script>
 	<script src='/js/sectionNavigation.js'></script>
 	<script src='/js/functions.js'></script>
 	<script src='/js/cookieAlert.js'></script>

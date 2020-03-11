@@ -3,7 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/inc/autoload.inc.php");
 
 $actionName = $_POST["action"];
 if(isset($actionName)){
-    $className = "actions\\" . $actionName;
+    $className = "action\\" . $actionName;
     $action = new $className;
     
     $errors = $action->init();

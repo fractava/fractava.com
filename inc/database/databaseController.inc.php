@@ -17,4 +17,19 @@ class databaseController {
     function prepare($sql) {
         return $this->$pdo->prepare($sql);
     }
+    function getColumnsOfTable($table) {
+        $database = configManager::getConfig()["db_name"];
+        
+        $columnNameStatement = $this->prepare("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = :database AND TABLE_NAME = :table");
+        $columnNameStatement->execute(array("database" => $database, "table" => $table));
+        $columnNames = $columnNameStatement->fetchAll();
+        
+        $columnNamesResorted = array();
+        
+        foreach($columnNames as $name){
+            $columnNamesResorted[] = $name["COLUMN_NAME"];
+        }
+        
+        return $columnNamesResorted;
+    }
 }

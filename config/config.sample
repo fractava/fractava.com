@@ -1,5 +1,5 @@
 <?php
-$CONFIG = array (
+return array (
         'db_host' => '',
         'db_name' => '',
         'db_user' => '',

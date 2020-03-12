@@ -1,41 +1,49 @@
-body{
+body {
     margin: 0px;
 }
-.FullHeight{
+.FullHeight {
     height: 100%;
 }
-.white{
+.white {
     background-color: white;
 }
-.black{
+.black {
     background-color: black;
 }
-.textWhite{
+.textWhite {
     color: white;
 }
-.textBlack{
+.textBlack {
     color: black;
 }
-.scrollTriangle{
+.scrollTriangle {
     font-size: 56px;
     position: absolute;
     bottom: 10px;
     left: 50%;
     text-align: center;
 }
-#navPointContainer{
+#navPointContainer {
     position: fixed;
     width: auto;
     font-size: 60px;
     top: 50%;
     transform: translateY(-50%);
 }
-.navPoint{
+html.phone #navPointContainer {
+    display: none;
+}
+.navPoint {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 4px;
+    font-size: 70px;
+    transition: all .1s ease-in-out;
 }
-#footerSection{
+.navPoint:hover {
+    transform: scale(1.2);
+}
+#footerSection {
     padding: 10px;
 }
 .fade-enter-active {

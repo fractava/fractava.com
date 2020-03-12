@@ -5,7 +5,7 @@
     transform: translate(-50%,-50%);
     color: white;
     font-family: nextfont;
-    font-size: 96px;
+    font-size: calc(4vw + 4vh + 2vmin);
     text-align: center;
 	margin: 0;
 }

@@ -1,8 +1,8 @@
 // Setup
-$(document).ready(function() {
+/*$(document).ready(function() {
 	setUpNavPoints();
 	updateNavColors();
-});
+});*/
 $(window).scroll(function() {
 	updateNavColors();
 });
@@ -27,6 +27,8 @@ function updateNavColors() {
 	}
 }
 function setUpNavPoints(){
+    $("#navPointContainer").remove();
+    
 	var table = document.createElement('TABLE');
 	table.setAttribute('id', 'navPointContainer');
 	
@@ -48,6 +50,8 @@ function setUpNavPoints(){
 		table.appendChild(tr);
 	}
 	document.body.appendChild(table);
+	
+	updateNavColors();
 }
 
 // Helper Functions

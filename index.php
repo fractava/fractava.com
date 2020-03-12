@@ -9,12 +9,14 @@
 	<link rel="stylesheet" href="/css/fonts.css">
 	<link rel="stylesheet" href="/css/cookieAlert.css">
 	
+	<script src='/js/libaries/vue.js'></script>
+	<script src='/js/libaries/vue-router.js'></script>
 	<script src='/js/libaries/jquery.min.js'></script>
 	<script src='/js/libaries/mobile-detect.js'></script>
 	
+	<script src='/js/sectionNavigation.js'></script>
 	<script src='/js/main.js'></script>
 	<script src='/js/network.js'></script>
-	<script src='/js/sectionNavigation.js'></script>
 	<script src='/js/functions.js'></script>
 	<script src='/js/cookieAlert.js'></script>
 	<script src='/js/mobileDetect.js'></script>
@@ -29,17 +31,10 @@
             <button class="cookieAlertButton" onclick="declineCookies()">Nein</button>
         </div>
     </div>
-
-	<section style = 'background-color: black;' class="navSection FullHeight" data-section-id="0">
-		<p id="fractavaNameText">FRACTAVA</p>
-		<p class="scroll textWhite" onclick="ScrollToSection(1);">▼</p>
-	</section>
-	<section style = 'background-color: white;' class="navSection FullHeight" data-section-id="1">
-		<p class="textBlack">Diese Seite befindet sich zur Zeit im Umbau</p>
-	</section>
-	<section id="footerSection" style='background-color: black;' data-section-id="2">
-		<div id = "footerFlexDiv">
-			<span class="textWhite">Impressum: Bruno Trautsch - support@fractava.com - 93051 Regensburg Klenzestrasse 13</span>
-		</div>
-	</section>
+	
+	<div id="app">
+	    <transition name="fade">
+            <router-view></router-view>
+        </transition>
+    </div>
 </body>

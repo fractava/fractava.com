@@ -1,0 +1,10 @@
+{
+    "error0": "Zu wenige Informationen übermittelt",
+    "error1": "email ungültig",
+    "error2": "Passwörter müssen mindestens 5 Zeichen lang sein",
+    "error3": "Der Benutzername darf keine Leerzeichen enthalten",
+    "error4": "Der Benutzername darf keine Sonderzeichen enthalten",
+    "error5": "Die Email ist bereits registriert",
+    "error6": "Der Benutzename ist bereits registriert",
+    "error10": "Email oder Passwort falsch"
+}

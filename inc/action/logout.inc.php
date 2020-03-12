@@ -1,6 +1,6 @@
 <?php
 
-namespace actions;
+namespace action;
 
 class logout extends \network\action {
     function init(){

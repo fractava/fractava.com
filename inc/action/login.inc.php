@@ -1,6 +1,6 @@
 <?php
 
-namespace actions;
+namespace action;
 
 use password\encryption;
 use database\simpleDatabaseQuery;

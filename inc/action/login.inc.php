@@ -4,6 +4,8 @@ namespace action;
 
 use password\encryption;
 use database\simpleDatabaseQuery;
+use cookies\cookieManager;
+use session\sessionManager;
 
 class login extends \network\action{
     
@@ -31,16 +33,19 @@ class login extends \network\action{
         return $errors;
     }
     public function run(){
-        session_start();
+        $sessionManager = new sessionManager();
+        $sessionManager->sessionStart();
 
     	$_SESSION['userid'] = $this->userInfo['id'];
     
     	$identifier = encryption::randomString();
     	$securitytoken = encryption::randomString();
+    	
     	$insert = new simpleDatabaseQuery("INSERT INTO securityTokens (user_id, identifier, securitytoken) VALUES (:user_id, :identifier, :securitytoken);", array('user_id' => $this->userInfo['id'], 'identifier' => $identifier, 'securitytoken' => sha1($securitytoken)));
         
-    	setcookie("identifier",$identifier,time()+(3600*24*365)); //Valid for 1 year
-    	setcookie("securitytoken",$securitytoken,time()+(3600*24*365)); //Valid for 1 year
+        $cookieManager = new cookieManager();
+        $cookieManager->setCookie("identifier",$identifier,time()+(3600*24*365));
+        $cookieManager->setCookie("securitytoken",$securitytoken,time()+(3600*24*365));
     }
 }
 

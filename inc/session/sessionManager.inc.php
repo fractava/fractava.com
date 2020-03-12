@@ -2,10 +2,12 @@
 namespace session;
 
 use user\user;
+use cookies\cookieManager;
 
 class sessionManager {
     function sessionStart() {
-        if($_COOKIE["cookieLevel"] == "1"){
+        $cookieManager = new cookieManager();
+        if($cookieManager->cookiePermissionGranted()) {
             session_start();
             return true;
         }else {
@@ -14,7 +16,8 @@ class sessionManager {
     }
     function sessionClose() {
         session_destroy();
-        setcookie("PHPSESSID","",time()-(3600*24*365));
+        $cookieManager = new cookieManager();
+        $cookieManager->removeCookie("PHPSESSID");
     }
     function isLoggedIn() {
         $this->sessionStart();

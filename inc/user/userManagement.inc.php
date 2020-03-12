@@ -36,7 +36,4 @@ class userManagement {
             return false;
         }
     }
-    function getLoggedInUser(){
-        
-    }
 }

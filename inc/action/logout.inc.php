@@ -2,17 +2,22 @@
 
 namespace action;
 
+use session\sessionManager;
+use cookies\cookieManager;
+
 class logout extends \network\action {
     function init(){
         return array();
     }
     function run() {
-        session_start();
-        session_destroy();
+        $sessionManager = new sessionManager();
+        $sessionManager->sessionStart();
+        $sessionManager->sessionClose();
+        
         unset($_SESSION['userid']);
         
-        //Remove Cookies
-        setcookie("identifier","",time()-(3600*24*365));
-        setcookie("securitytoken","",time()-(3600*24*365));
+        $cookieManager = new cookieManager();
+        $cookieManager->removeCookie("identifier");
+        $cookieManager->removeCookie("securitytoken");
     }
 }

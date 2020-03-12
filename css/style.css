@@ -16,12 +16,19 @@ body{
 .textBlack{
     color: black;
 }
-.scroll{
+.scrollTriangle{
     font-size: 56px;
     position: absolute;
     bottom: 10px;
     left: 50%;
     text-align: center;
+}
+#navPointContainer{
+    position: fixed;
+    width: auto;
+    font-size: 60px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .navPoint{
     margin-top: 10px;
@@ -31,29 +38,10 @@ body{
 #footerSection{
     padding: 10px;
 }
-#navPointContainer{
-    position: fixed;
-    width: auto;
-    font-size: 60px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-#fractavaNameText{
-    position: absolute;
-    left: 50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-    color: white;
-    font-family: nextfont;
-    font-size: 96px;
-	text-align: center;
-	margin: 0;
-}
-
-.fade-enter-active /*, .fade-leave-active*/ {
+.fade-enter-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 

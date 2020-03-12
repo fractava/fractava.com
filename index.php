@@ -37,4 +37,10 @@
             <router-view></router-view>
         </transition>
     </div>
+    
+    <section id="footerSection" style='background-color: black;'>
+		<div>
+			<span class="textWhite">Impressum: Bruno Trautsch - support@fractava.com - 93051 Regensburg Klenzestrasse 13</span>
+		</div>
+	</section>
 </body>

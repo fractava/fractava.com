@@ -78,6 +78,7 @@ function getComponent(sideName) {
         
         getTemplate()
         .then(getSideFile)
+        .then(loadCSS)
         .then(assembleComponent)
         .then(function(){
             resolve(component);
@@ -103,6 +104,13 @@ function getComponent(sideName) {
                     sideFile = data.side;
                     resolve();
                 });
+            });
+        }
+        
+        function loadCSS(){
+            return new Promise(function(resolve,reject){
+                loadStylesheet("/sides/" + sideName + ".css");
+                resolve();
             });
         }
         
@@ -140,6 +148,13 @@ function initNavigationGuard(){
 	    });
         resolve();
     });
+}
+function loadStylesheet(path) {
+    let link = document.createElement('LINK');
+    link.rel = "stylesheet";
+    link.href = path;
+    
+    $("head").append(link);
 }
 function runGoogleAnalytics() {
   window.dataLayer = window.dataLayer || [];

@@ -2,7 +2,7 @@
 namespace network;
 
 abstract class action extends \network\networkRequest{
-    public $return_type = "json";
+    public $returnType = "xml";
     public $params;
     
     function __construct() {

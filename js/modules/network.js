@@ -1,4 +1,6 @@
 import * as lang from "/js/modules/language.js";
+import * as dialogs from "/js/modules/dialogs.js";
+
 
 function getRequest(url,parameters,type,callbackSucess,callbackFail){
 	let jqxhr = $.get(url, parameters, function(data,textStatus,jqXHR){
@@ -53,9 +55,10 @@ function getDataRequest(parameters,retry,showError,maxRetries){
 				let xml = $(jqXHR.responseText);
 				let errors = xml.find("error");
 				
-				errorText = "";
+				let errorText = "";
 				if(showError){
 					for(let i = 0; i< errors.length; i++){
+					    let newError;
 						newError = (lang.get("error"+errors[i].getAttribute("id"))+"\n");
 						console.log(errors[i].getAttribute("extraDetail"));
 						if(errors[i].getAttribute("extraDetail")){
@@ -63,7 +66,7 @@ function getDataRequest(parameters,retry,showError,maxRetries){
 						}
 						errorText += newError;
 					}
-					errorDialog(errorText);
+					dialogs.errorDialog(errorText);
 				}
 				let rejectArray = [];
 				for(let i = 0; i< errors.length; i++){
@@ -76,7 +79,7 @@ function getDataRequest(parameters,retry,showError,maxRetries){
 					setTimeout(function(){execute()},retryWait);
 				}else{
 					if(showError){
-						errorDialog(lang.get("httpError"+jqXHR.status));
+						dialogs.errorDialog(lang.get("httpError"+jqXHR.status));
 					}
 					reject([{"errorLangName": "httpError"+jqXHR.status, "type": "http", "error": jqXHR.status}]);
 				}
@@ -123,9 +126,10 @@ function actionRequest(parameters,retry,showError,maxRetries){
 				let errors = xml.find("error");
 				console.log(errors);
 				
-				errorText = "";
+				let errorText = "";
 				if(showError){
 					for(let i = 0; i< errors.length; i++){
+					    let newError;
 						newError = (lang.get("error"+errors[i].getAttribute("id"))+"\n");
 						console.log(errors[i].getAttribute("extraDetail"));
 						if(errors[i].getAttribute("extraDetail")){
@@ -133,7 +137,7 @@ function actionRequest(parameters,retry,showError,maxRetries){
 						}
 						errorText += newError;
 					}
-					errorDialog(errorText);
+					dialogs.errorDialog(errorText);
 				}
 				let rejectArray = [];
 				for(let i = 0; i< errors.length; i++){
@@ -146,7 +150,7 @@ function actionRequest(parameters,retry,showError,maxRetries){
 					setTimeout(function(){execute()},retryWait);
 				}else{
 					if(showError){
-						errorDialog(lang.get("httpError"+jqXHR.status));
+						dialogs.errorDialog(lang.get("httpError"+jqXHR.status));
 					}
 					reject([{"errorLangName": "httpError"+jqXHR.status, "type": "http", "error": jqXHR.status}]);
 				}

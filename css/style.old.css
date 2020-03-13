@@ -52,7 +52,6 @@ html.phone #navPointContainer {
 #footerSection {
     padding: 10px;
     font-family: timeburner;
-    text-align: center;
 }
 .fade-enter-active {
     transition: opacity 0.5s;
@@ -68,7 +67,7 @@ html.phone #navPointContainer {
 }
 
 /* Buttons */
-.button {
+.buttonWhite, .buttonBlack {
     border-radius: 0px;
     padding: 10px 16px;
     font-size: 18px;
@@ -77,56 +76,35 @@ html.phone #navPointContainer {
     border-radius: .3125em;
     transition: all .1s ease-in-out;
     font-family: timeburner;
-    outline: none;
 }
-.button.whiteBackground {
+.buttonWhite {
     background: white;
+    border: 3px solid black;
+    color: black;
 }
-.button.whiteHoverBackground:hover {
-    background: white !important;
-}
-.button.blackBackground {
+.buttonWhite:hover {
     background: black;
+    color: white;  
 }
-.button.blackHoverBackground:hover {
-    background: black !important;
-}
-.button.transparentBackground {
-    background: transparent;
-}
-.button.transparentHoverBackground:hover {
-    background: transparent !important;
-}
-.button.whiteBorder {
+.buttonBlack {
+    background: black;
     border: 3px solid white;
+    color: white;  
 }
-.button.whiteHoverBorder:hover {
-    border: 3px solid white !important;
+.buttonBlack:hover {
+    background: white;
+    color: black;  
 }
-.button.blackBorder {
+.buttonBlack.buttonBorderless:hover {
     border: 3px solid black;
 }
-.button.blackHoverBorder:hover {
-    border: 3px solid black !important;
+.buttonWhite.buttonBorderless:hover {
+    border: 3px solid black;
 }
-.button.transparentBorder {
+.buttonBorderless:not(:hover) {
     border: 3px solid transparent;
 }
-.button.transparentHoverBorder:hover {
-    border: 3px solid transparent !important;
-}
-.button.blackText {
-    color: black !important;
-}
-.button.blackHoverText:hover {
-    color: black !important;
-}
-.button.whiteText {
-    color: white !important;
-}
-.button.whiteHoverText:hover {
-    color: white !important;
-}
+
 /* Text Inputs */
 .inputBlack, .inputWhite {
     outline: 0 none;
@@ -183,7 +161,7 @@ html.phone #navPointContainer {
 }
 
 /* Swal */
-.swal-popup .button, .swal-popup .inputBlack , .swal-popup .inputWhite {
+.swal-popup .buttonBlack, .swal-popup .buttonWhite, .swal-popup .inputBlack , .swal-popup .inputWhite {
     width: 90%;
     font-family: timeburner;
 }

@@ -2,7 +2,7 @@
 namespace network;
 
 abstract class getData extends \network\networkRequest{
-    public $return_type = "json";
+    public $returnType = "xml";
     public $params;
     
     function __construct() {

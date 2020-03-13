@@ -29,8 +29,8 @@ if(isset($actionName)){
         }
         
         if(is_array($results)) {
-            foreach($results as $result) {
-                $xml_results->addChild("results", $results);
+            foreach($results as $key => $value) {
+                $xml_results->addChild($key, $value);
             }
         }
         

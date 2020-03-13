@@ -1,4 +1,4 @@
-var side = {
+var site = {
     "methods": {
     },
     "computed": {
@@ -8,4 +8,4 @@ var side = {
     "lang": {
     }
 }
-export {side};
+export {site};

@@ -22,11 +22,12 @@ html.phone .cookieAlertContainer{
     transform: translateX(-50%);
     width: 50%;
     background-color: white;
-    padding-left: 7%;
-    padding-right: 7%;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-top: 10px;
     padding-bottom: 10px;
     z-index: 3000;
+    
 }
 html.mobile #cookieAlert{
     width: 100%;
@@ -36,34 +37,24 @@ html.mobile #cookieAlert{
     text-align: center;
     margin-bottom: 20px;
     font-size: xx-large;
+    font-family: timeburner;
 }
-html.phone #cookieAlertHeadline{
-}
-.cookieAlertButton{
-    background-color: white;
-    border-radius: 0px;
-    border: 2px solid gray;
+#cookieAlert .buttonWhite{
     width: 50%;
-    height: 40px;
 }
-.cookieAlertButton:first-child{
-    background-color: lightgray;
+#cookieAlert .buttonWhite:first-child{
     font-weight: bold;
 }
-html.phone .cookieAlertButton{
-    width: 90%;
+html.phone #cookieAlert .buttonWhite{
+    width: 90% !important;
     height: 100px;
     font-size: xx-large;
-    border: 5px solid gray;
 }
-html:not(.phone) .cookieAlertButton:not(:last-child){
+html:not(.phone) #cookieAlert .buttonWhite:not(:last-child){
     margin-right: 10px;
 }
-html.phone .cookieAlertButton{
+html.phone #cookieAlert .buttonWhite{
     margin-bottom: 10px;
-}
-html:not(.mobile) .cookieAlertButton:hover{
-    background-color: gray;
 }
 #cookieAlertButtonConatainer{
     display: flex;

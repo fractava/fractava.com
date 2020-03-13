@@ -5,9 +5,9 @@ var sides = [];
 var vueRoutes = [];
 var router;
 var vm;
-var defaultSide = "/index";
+var defaultSide = "/home";
 
-getSides()
+getSites()
 .then(assembleSideRoutes)
 .then(initVueRouter)
 .then(initNavigationGuard)
@@ -16,9 +16,9 @@ getSides()
     console.log(vueRoutes);
 });
 
-function getSides() {
+function getSites() {
     return new Promise(function(resolve,reject){
-        $.get({url: "/sides/sides.json", dataType: "json", success: function(data) {
+        $.get({url: "/sites/sites.json", dataType: "json", success: function(data) {
             sides = data;
             resolve();
         }});
@@ -88,7 +88,7 @@ function getComponent(sideName) {
         function getTemplate() {
             return new Promise(function(resolve,reject){
                 $.get({
-                    "url": "/sides/" + sideName + ".html",
+                    "url": "/sites/" + sideName + ".html",
                     "dataType": "text",
                     "success": function(data) {
                         template = data;
@@ -100,9 +100,9 @@ function getComponent(sideName) {
         
         function getSideFile() {
             return new Promise(function(resolve,reject){
-                let url = "/sides/" + sideName + ".js";
+                let url = "/sites/" + sideName + ".js";
                 import(url).then(function(data){
-                    sideFile = data.side;
+                    sideFile = data.site;
                     resolve();
                 });
             });
@@ -110,7 +110,7 @@ function getComponent(sideName) {
         
         function loadCSS(){
             return new Promise(function(resolve,reject){
-                stylesheetLoader.load("/sides/" + sideName + ".css");
+                stylesheetLoader.load("/sites/" + sideName + ".css");
                 resolve();
             });
         }

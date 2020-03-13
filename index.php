@@ -23,28 +23,32 @@
     <div id="cookieAlert">
         <p id="cookieAlertHeadline">Darf diese Website Cookies verwenden?</p>
         <div id="cookieAlertButtonConatainer">
-            <button id="acceptCookiesButton" class="cookieAlertButton">Ja</button>
-            <button id="declineCookiesButton" class="cookieAlertButton">Nein</button>
+            <button id="acceptCookiesButton" class="buttonWhite">Ja</button>
+            <button id="declineCookiesButton" class="buttonWhite">Nein</button>
         </div>
     </div>
     
     <div id="accountContainer">
         <div id="accountContainerNotLoggedIn">
-            <span class="textWhite" id="accountLogin">Login</span>
-            <span class="textWhite"> | </span>
-            <span class="textWhite" id="accountRegister">Register</span>
+            <button class="button transparentBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText" id="accountRegister">Register</button>
+            <button class="button whiteBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText" id="accountLogin">Login</button>
         </div>
         <div id="accountContainerLoggedIn" style="display: none;">
             <span class="textWhite" id="accountUsername"></span>
             <span class="textWhite"> | </span>
-            <span class="textWhite" id="accountLogout">Logout</span>
+            <button id="accountLogout" class="button transparentBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText" id="accountRegister">Logout</button>
         </div>
     </div>
 	
 	<div id="app">
-	    <transition name="fade">
+        <div id="navBarContainer">
+            <router-link class="navBarItem" to="/home">Home</router-link>
+            <router-link class="navBarItem" to="/products">Produkte</router-link>
+        </div>
+    
+	    <!--<transition name="fade">-->
             <router-view></router-view>
-        </transition>
+        <!--</transition>-->
     </div>
     
     <section id="footerSection" style='background-color: black;'>

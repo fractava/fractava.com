@@ -50,6 +50,4 @@ class login extends \network\action{
         return array("identifier" => $identifier, "securitytoken" => $securitytoken);
     }
 }
-
-return new login();
 ?>

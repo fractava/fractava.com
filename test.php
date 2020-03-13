@@ -25,6 +25,7 @@ var_dump(encryption::checkPassword("", '$2y$10$jtBaPoXYJLk.Nthw7gcDh.jVCBAMqOdl8
 */
 
 use session\sessionManager;
+
 $sessionManager = new sessionManager();
 if($sessionManager->isLoggedIn()) {
     var_dump($sessionManager->getLoggedInUser()->getAttribute("email"));

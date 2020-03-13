@@ -23,8 +23,8 @@
     <div id="cookieAlert">
         <p id="cookieAlertHeadline">Darf diese Website Cookies verwenden?</p>
         <div id="cookieAlertButtonConatainer">
-            <button id="acceptCookiesButton" class="buttonWhite">Ja</button>
-            <button id="declineCookiesButton" class="buttonWhite">Nein</button>
+            <button id="acceptCookiesButton" class="button whiteBackground blackBorder blackHoverBackground blackText whiteHoverText">Ja</button>
+            <button id="declineCookiesButton" class="button whiteBackground blackBorder blackHoverBackground blackText whiteHoverText">Nein</button>
         </div>
     </div>
     

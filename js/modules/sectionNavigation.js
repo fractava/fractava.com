@@ -1,8 +1,3 @@
-// Setup
-/*$(document).ready(function() {
-	setUpNavPoints();
-	updateNavColors();
-});*/
 $(window).scroll(function() {
 	updateNavColors();
 });
@@ -54,6 +49,12 @@ function setUpNavPoints(){
 	updateNavColors();
 }
 
+function setupEventHandlers() {
+    $(".scrollTriangle").click(function() {
+        ScrollToSection(this.getAttribute("data-to-section"));
+    });
+}
+
 // Helper Functions
 function ScrollToElement(element) {
   $('html,body').animate({scrollTop: $(element).offset().top}, 'slow');
@@ -87,3 +88,5 @@ function collidesWith (element1, element2) {
 
   return (Element1.right > Element2.left && Element1.left < Element2.right && Element1.top < Element2.bottom && Element1.bottom > Element2.top);
 }
+
+export{setUpNavPoints, setupEventHandlers, updateNavColors, ScrollToSection, ScrollToElement};

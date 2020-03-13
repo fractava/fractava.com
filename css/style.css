@@ -1,5 +1,7 @@
 body {
     margin: 0px;
+    padding: 0px !important;
+    overflow: initial !important;
 }
 .FullHeight {
     height: 100%;
@@ -47,9 +49,84 @@ html.phone #navPointContainer {
     padding: 10px;
 }
 .fade-enter-active {
-  transition: opacity 0.5s;
+    transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to {
-  opacity: 0;
+    opacity: 0;
+}
+#accountContainer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+#accountLogin:hover, #accountRegister:hover {
+    text-decoration: underline;
 }
 
+/* Buttons */
+.buttonWhite, .buttonBlack {
+    border-radius: 0px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border: none;
+    border-radius: .3125em;
+    transition: all .1s ease-in-out;
+}
+.buttonWhite {
+    background: white;
+    color: black;
+}
+.buttonBlack {
+    background: white;
+    border: 3px solid black;
+    color: black;  
+}
+.buttonBlack:hover {
+    background: black;
+    color: white;  
+}
+
+/* Text Inputs */
+.inputBlack, .inputWhite {
+    outline: 0 none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    height:34px;
+    box-sizing: border-box;
+    padding: 6px 4px;
+    margin-bottom: 20px;
+    transition: all .1s ease-in-out;
+}
+.inputBlack {
+    background-color: black;
+    border-bottom: 2px solid gray;
+    color: gray;
+}
+.inputBlack:focus {
+    outline: 0 none;
+    border-bottom: 2px solid white;
+    color: white;
+}
+.inputWhite {
+    color: gray;
+    background-color: white;
+    border-bottom: 2px solid gray;
+}
+.inputWhite:focus {
+    outline: 0 none;
+    border-bottom: 2px solid black;
+    color: black;
+}
+
+/* Swal */
+.swal-popup .buttonBlack, .swal-popup .buttonWhite, .swal-popup .inputBlack , .swal-popup .inputWhite {
+    width: 90%;
+}
+.swal-title {
+    color: black !important;
+}
+.swal-close-button:hover {
+    color: black !important;
+}

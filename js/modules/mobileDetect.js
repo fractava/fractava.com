@@ -1,12 +1,9 @@
-$(document).ready(function() {
-    detectMobile();
-});
+refreshCSSClasses();
+
 window.addEventListener('resize', function(event){
-    detectMobile();
+    refreshCSSClasses();
 });
-function detectMobile(){
-    console.log("mobile detect");
-    
+function refreshCSSClasses(){
     return new Promise(function(resolve,reject){
         let md = new MobileDetect(window.navigator.userAgent);
         
@@ -18,3 +15,5 @@ function detectMobile(){
         resolve();
     });
 }
+
+export{refreshCSSClasses};

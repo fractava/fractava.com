@@ -7,19 +7,15 @@
 	
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/fonts.css">
-	<link rel="stylesheet" href="/css/cookieAlert.css">
+	<link rel="stylesheet" href="/css/cookieDialog.css">
 	
 	<script src='/js/libaries/vue.js'></script>
 	<script src='/js/libaries/vue-router.js'></script>
 	<script src='/js/libaries/jquery.min.js'></script>
 	<script src='/js/libaries/mobile-detect.js'></script>
-	
-	<script src='/js/sectionNavigation.js'></script>
-	<script src='/js/main.js'></script>
-	<script src='/js/network.js'></script>
-	<script src='/js/functions.js'></script>
-	<script src='/js/cookieAlert.js'></script>
-	<script src='/js/mobileDetect.js'></script>
+	<script src='/js/libaries/sweetalert2.js'></script>
+    
+	<script src='/js/main.js' type="module"></script>
 	
 	<title>FRACTAVA</title>
 </head>
@@ -27,8 +23,21 @@
     <div id="cookieAlert">
         <p id="cookieAlertHeadline">Darf diese Website Cookies verwenden?</p>
         <div id="cookieAlertButtonConatainer">
-            <button class="cookieAlertButton" onclick="acceptCookies()">Ja</button>
-            <button class="cookieAlertButton" onclick="declineCookies()">Nein</button>
+            <button id="acceptCookiesButton" class="cookieAlertButton">Ja</button>
+            <button id="declineCookiesButton" class="cookieAlertButton">Nein</button>
+        </div>
+    </div>
+    
+    <div id="accountContainer">
+        <div id="accountContainerNotLoggedIn">
+            <span class="textWhite" id="accountLogin">Login</span>
+            <span class="textWhite"> | </span>
+            <span class="textWhite" id="accountRegister">Register</span>
+        </div>
+        <div id="accountContainerLoggedIn" style="display: none;">
+            <span class="textWhite" id="accountUsername"></span>
+            <span class="textWhite"> | </span>
+            <span class="textWhite" id="accountLogout">Logout</span>
         </div>
     </div>
 	

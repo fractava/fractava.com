@@ -46,6 +46,8 @@ class login extends \network\action{
         $cookieManager = new cookieManager();
         $cookieManager->setCookie("identifier",$identifier,time()+(3600*24*365));
         $cookieManager->setCookie("securitytoken",$securitytoken,time()+(3600*24*365));
+        
+        return array("identifier" => $identifier, "securitytoken" => $securitytoken);
     }
 }
 

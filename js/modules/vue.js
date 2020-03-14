@@ -127,6 +127,10 @@ function getComponent(sideName) {
                         lang: {
                             type: Object,
                             default: function () { return sideFile.lang }
+                        },
+                        title: {
+                            type: String,
+                            default: sideFile.title
                         }
                     },
                     methods: sideFile.methods,
@@ -144,6 +148,7 @@ function initNavigationGuard(){
         router.afterEach((to, from) => {
             setTimeout(function() {
                 console.log(to);
+                document.title = to.matched[0].components.default.props.title.default + " - FRACTAVA";
                 sectionNavigation.setUpNavPoints();
                 sectionNavigation.setupEventHandlers();
             }, 1000);

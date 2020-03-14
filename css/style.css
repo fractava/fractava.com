@@ -6,6 +6,11 @@ body {
 #app {
     min-height: 100%;
 }
+#app > div[id$='Container']:not(#navBarContainer) {
+    padding-bottom: 10px;
+    width: 100% !important;
+    min-height: 100%;
+}
 .FullHeight {
     height: 100%;
 }
@@ -53,6 +58,11 @@ html.phone #navPointContainer {
     padding: 10px;
     font-family: timeburner;
     text-align: center;
+}
+#footerSection > a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
 }
 .fade-enter-active {
     transition: opacity 0.5s;

@@ -1,5 +1,5 @@
 var site = {
-    "title": "Produkte",
+    "title": "Datenschutzerklärung",
     "methods": {
     },
     "computed": {

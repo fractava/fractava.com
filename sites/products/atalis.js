@@ -1,4 +1,5 @@
 var site = {
+    "title": "Atalis",
     "methods": {
     },
     "computed": {

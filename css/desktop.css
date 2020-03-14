@@ -2,7 +2,7 @@
 html.no-mobile #mobileSidenav {
     display: none;
 }
-html.no-mobile #openMobileSidenav {
+html.no-mobile #openMobileSidenavDiv {
     display: none;
 }
 

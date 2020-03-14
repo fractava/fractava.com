@@ -1,0 +1,52 @@
+/* Disable Desktop Stuff*/
+html.mobile #navPointContainer {
+    display: none;
+}
+html.mobile #navBarContainer {
+    display: none;
+}
+html.mobile #accountContainer {
+    display: none;
+}
+
+/* Sidenav */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 8vh;
+    transition: 0.5s;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 5vh;
+    color: white;
+    display: block;
+    font-family: timeburner;
+}
+#mobileSidenav a.router-link-active {
+    font-size: 6vh;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 10vw;
+    margin-left: 50px;
+}
+
+#openMobileSidenavDiv {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 15vw;
+    height: 15vw;
+}

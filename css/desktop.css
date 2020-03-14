@@ -1,0 +1,57 @@
+/* Disable Mobile Stuff*/
+html.no-mobile #mobileSidenav {
+    display: none;
+}
+html.no-mobile #openMobileSidenav {
+    display: none;
+}
+
+/* Nav Points */
+#navPointContainer {
+    position: fixed;
+    width: auto;
+    font-size: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.navPoint {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 4px;
+    font-size: 70px;
+    font-family: nextfont;
+    transition: all .1s ease-in-out;
+}
+.navPoint:hover {
+    transform: scale(1.2);
+}
+
+/* Account Container*/
+#accountContainer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: timeburner;
+}
+
+/* Navbar */
+#navBarContainer {
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    padding-top: 13px;
+}
+#navBarContainer .navBarItem {
+    color: white;
+    font-family: timeburner;
+    margin-bottom: 3px solid transparent;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    line-height: 1.3333333;
+    font-size: 18px;
+    text-decoration: none;
+}
+#navBarContainer .navBarItem:hover, #navBarContainer .navBarItem.router-link-active{
+    border-bottom: 3px solid white;
+}

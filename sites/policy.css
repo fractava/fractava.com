@@ -2,6 +2,9 @@
     color: white;
     text-align: center;
 }
+#policyContainer p, #policyContainer b, #policyContainer a {
+    font-family: timeburner;
+}
 #policyContainer h1, #policyContainer h2, #policyContainer h3, #policyContainer h4 {
 	font-family: 'nextfont';
 	margin: 0;

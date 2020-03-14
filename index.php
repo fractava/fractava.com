@@ -6,9 +6,11 @@
 	<link rel="shortcut icon" type="image/png" href="/assets/img/logo/logo_black.png"/>
 	
 	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/desktop.css">
+	<link rel="stylesheet" href="/css/mobile.css">
 	<link rel="stylesheet" href="/css/fonts.css">
 	<link rel="stylesheet" href="/css/cookieDialog.css">
-	
+
 	<script src='/js/libaries/vue.js'></script>
 	<script src='/js/libaries/vue-router.js'></script>
 	<script src='/js/libaries/jquery.min.js'></script>
@@ -42,8 +44,16 @@
 	
 	<div id="app">
         <div id="navBarContainer">
-            <router-link class="navBarItem" to="/home">Home</router-link>
+            <router-link class="navBarItem"to="/home">Home</router-link>
             <router-link class="navBarItem" to="/products">Produkte</router-link>
+        </div>
+        <div id="mobileSidenav" class="sidenav">
+            <a href="javascript:void(0)" v-on:click="modules.sidenav.close()" id="closeMobileSidenav" class="closebtn">&times;</a>
+            <router-link class="navBarItem" to="/home"><span v-on:click="modules.sidenav.close()">Home</span></router-link>
+            <router-link class="navBarItem" to="/products"><span v-on:click="modules.sidenav.close()">Produkte</span></router-link>
+        </div>
+        <div id="openMobileSidenavDiv" v-on:click="modules.sidenav.open()">
+            <svg id="openMobileSidenav" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="white" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
         </div>
     
 	    <!--<transition name="fade">-->

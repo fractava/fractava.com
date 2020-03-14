@@ -26,7 +26,7 @@ class register extends \network\action {
         if (stristr($this->username, ' ')){
         	$errors[] = 3;
         }
-        if(!preg_match("/[a-zA-Z_.]{3,16}$/", $this->username)) { 
+        if(!preg_match("/[a-zA-Z0-9_.]{3,16}$/", $this->username)) {
             $errors[] = 4;
         } 
         

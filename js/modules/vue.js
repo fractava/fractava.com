@@ -148,10 +148,10 @@ function initNavigationGuard(){
         router.afterEach((to, from) => {
             setTimeout(function() {
                 console.log(to);
-                document.title = to.matched[0].components.default.props.title.default + " - FRACTAVA";
                 sectionNavigation.setUpNavPoints();
                 sectionNavigation.setupEventHandlers();
             }, 1000);
+            document.title = to.matched[0].components.default.props.title.default + " - FRACTAVA";
 	    });
         resolve();
     });

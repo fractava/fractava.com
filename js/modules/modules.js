@@ -8,5 +8,6 @@ import * as cookies from "/js/modules/cookies.js";
 import * as sidenav from "/js/modules/sidenav.js";
 import * as vueRouter from "/js/modules/vueRouter.js";
 import * as account from "/js/modules/account.js";
+import * as language from "/js/modules/language.js";
 
-export{network, dialogs, stylesheetLoader, cookieDialog, mobileDetect, sectionNavigation, cookies, sidenav, vueRouter, account};
+export{network, dialogs, stylesheetLoader, cookieDialog, mobileDetect, sectionNavigation, cookies, sidenav, vueRouter, account, language};

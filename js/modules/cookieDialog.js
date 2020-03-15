@@ -2,14 +2,9 @@ import * as cookies from "/js/modules/cookies.js";
 import * as googleAnalytics from "/js/modules/googleAnalytics.js";
 
 function init() {
-    checkCookiePermission();
-    
-    $("#acceptCookiesButton").click(function() {
-        acceptCookies();
-    });
-    
-    $("#declineCookiesButton").click(function() {
-        declineCookies();
+    return new Promise(function(resolve,reject){
+        checkCookiePermission();
+        resolve();
     });
 }
 function checkCookiePermission(){

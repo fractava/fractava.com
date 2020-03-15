@@ -28,12 +28,32 @@ function initVue() {
 
 function initModules() {
     return new Promise(function(resolve,reject){
+        let moduleNames = [];
         for(let module in modules){
-            if(modules[module]["init"]) {
-                modules[module].init();
+            moduleNames.push(module);
+        }
+        
+        function initModule(name){
+            if(modules[name]["init"]) {
+                console
+                return modules[name].init();
+            }else {
+                return Promise.resolve();
             }
         }
-        resolve();
+        
+        function initModulesRecursive(i) {
+            initModule(moduleNames[i])
+            .then(function() {
+                if(moduleNames[i+1]){
+                    initModulesRecursive(i+1);
+                }else {
+                    resolve();
+                }
+            })
+        }
+        
+        initModulesRecursive(0);
     });
 }
 

@@ -4,7 +4,10 @@ var loggedIn;
 var username;
 
 function init() {
-    checkLoggedIn();
+    return new Promise(function(resolve,reject){
+        checkLoggedIn();
+        resolve();
+    });
 }
 function checkLoggedIn() {
     network.getDataRequest({"getData": "loggedIn"})

@@ -4,10 +4,10 @@ import * as account from "/js/modules/account.js";
 
 function loginDialog(){
     htmlDialog({
-        title: "Login",
+        title: lang.get("login"),
         html:
-            "<input autocomplete='on' type='email' id='loginEmail' placeholder='Email' class='inputWhite'></input>" +
-            "<input autocomplete='on' type='password' id='loginPassword' placeholder='Passwort' class='inputWhite'></input>",
+            "<input autocomplete='on' type='email' id='loginEmail' placeholder='" + lang.get("email") + "' class='inputWhite'></input>" +
+            "<input autocomplete='on' type='password' id='loginPassword' placeholder='" + lang.get("password") + "' class='inputWhite'></input>",
         preConfirm: () => {
             return {
               "email": document.getElementById('loginEmail').value,
@@ -26,15 +26,15 @@ function loginDialog(){
 }
 function registerDialog(){
     htmlDialog({
-        title: "Registrieren",
+        title: lang.get("register"),
         html:
             "<p id='registerError'></p>" +
-            "<input autocomplete='on' type='text' id='registerFirstName' placeholder='Vorname' class='inputWhite'></input>" +
-            "<input autocomplete='on' type='text' id='registerLastName' placeholder='Nachnahme' class='inputWhite'></input>" +
-            "<input autocomplete='on' type='text' id='registerUsername' placeholder='Username' class='inputWhite'></input>" +
-            "<input autocomplete='on' type='email' id='registerEmail' placeholder='Email' class='inputWhite'></input>" +
-            "<input autocomplete='on' type='password' id='registerPassword' placeholder='Passwort' class='inputWhite'></input>" +
-            "<input autocomplete='on' type='password' id='registerPassword2' placeholder='Passwort wiederholen' class='inputWhite'></input>",
+            "<input autocomplete='on' type='text' id='registerFirstName' placeholder='" + lang.get("firstName") + "' class='inputWhite'></input>" +
+            "<input autocomplete='on' type='text' id='registerLastName' placeholder='" + lang.get("lastName") + "' class='inputWhite'></input>" +
+            "<input autocomplete='on' type='text' id='registerUsername' placeholder='" + lang.get("username") + "' class='inputWhite'></input>" +
+            "<input autocomplete='on' type='email' id='registerEmail' placeholder='" + lang.get("email") + "' class='inputWhite'></input>" +
+            "<input autocomplete='on' type='password' id='registerPassword' placeholder='" + lang.get("password") + "' class='inputWhite'></input>" +
+            "<input autocomplete='on' type='password' id='registerPassword2' placeholder='" + lang.get("passwordRepeat") + "' class='inputWhite'></input>",
 
         preConfirm: () => {
             let firstName = document.getElementById('registerFirstName').value;

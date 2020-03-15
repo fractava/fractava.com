@@ -1,6 +1,9 @@
 function init() {
-    $(window).scroll(function() {
-    	updateNavColors();
+    return new Promise(function(resolve,reject){
+        $(window).scroll(function() {
+        	updateNavColors();
+        });
+        resolve();
     });
 }
 

@@ -2,7 +2,21 @@ var language;
 
 function init() {
     return new Promise(function(resolve,reject){
-        let languageName = "de";
+        loadLanguage(navigator.language)
+        .then(function() {
+            console.log("lang loading successfull");
+            resolve();
+        })
+        .catch(function() {
+            console.log("loading en-US instead of " + navigator.language);
+            loadLanguage("en-US").then(function() {
+                resolve();
+            });
+        });
+    });
+}
+function loadLanguage(languageName) {
+    return new Promise(function(resolve,reject){
         $.get({
             "url": "/lang/" + languageName + ".json",
             "dataType": "json",
@@ -10,7 +24,10 @@ function init() {
                 language = data;
                 resolve();
             }
-        });
+        })
+        .fail(function() {
+            reject();
+        })
     });
 }
 function get(name) {

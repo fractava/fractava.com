@@ -23,17 +23,18 @@
     	<title>FRACTAVA</title>
     </head>
     <body>
-        <div id="cookieAlert">
-            <p id="cookieAlertHeadline">Darf diese Website Cookies verwenden?</p>
-            <div id="cookieAlertButtonConatainer">
-                <button id="acceptCookiesButton" class="button whiteBackground blackBorder blackHoverBackground blackText whiteHoverText">Ja</button>
-                <button id="declineCookiesButton" class="button whiteBackground blackBorder blackHoverBackground blackText whiteHoverText">Nein</button>
-            </div>
-        </div>
+
     	<div id="app">
+    	   <div id="cookieAlert">
+                <p id="cookieAlertHeadline">{{ modules.language.get("cookiesAllowed") }}</p>
+                <div id="cookieAlertButtonConatainer">
+                    <button id="acceptCookiesButton" v-on:click="modules.cookieDialog.acceptCookies()" class="button whiteBackground blackBorder blackHoverBackground blackText whiteHoverText">{{ modules.language.get("yes") }}</button>
+                    <button id="declineCookiesButton" v-on:click="modules.cookieDialog.declineCookies()" class="button whiteBackground blackBorder blackHoverBackground blackText whiteHoverText">{{ modules.language.get("no") }}</button>
+                </div>
+            </div>
             <div id="navBarContainer">
-                <router-link class="navBarItem" to="/home">Home</router-link>
-                <router-link class="navBarItem" to="/products">Produkte</router-link>
+                <router-link class="navBarItem" to="/home">{{ modules.language.get("home") }}</router-link>
+                <router-link class="navBarItem" to="/products">{{ modules.language.get("products") }}</router-link>
             </div>
             <div id="accountContainer">
                 <div id="accountContainerNotLoggedIn">
@@ -55,14 +56,12 @@
                 <svg id="openMobileSidenav" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="white" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </div>
         
-    	    <!--<transition name="fade">-->
-                <router-view></router-view>
-            <!--</transition>-->
-            
+            <router-view></router-view>
+
             <section id="footerSection">
                 <div>
-                    <router-link to="/policy">Datenschutzerklärung</router-link>
-                    <router-link to="/impressum">Impressum</router-link>
+                    <router-link to="/policy">{{ modules.language.get("privacyPolicy") }}</router-link>
+                    <router-link to="/impressum">{{ modules.language.get("legalNotice") }}</router-link>
                 </div>
                 <div><span style="color: white;">© FRACTAVA 2020</span></div>
     	    </section>

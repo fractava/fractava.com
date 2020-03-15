@@ -1,8 +1,11 @@
 function init() {
-    refreshCSSClasses();
-    
-    window.addEventListener('resize', function(event){
+    return new Promise(function(resolve,reject){
         refreshCSSClasses();
+        
+        window.addEventListener('resize', function(event){
+            refreshCSSClasses();
+        });
+        resolve();
     });
 }
 function refreshCSSClasses(){

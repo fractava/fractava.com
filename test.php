@@ -24,11 +24,15 @@ var_dump(passwordManagement::checkPassword(2, ""));*/
 var_dump(encryption::checkPassword("", '$2y$10$jtBaPoXYJLk.Nthw7gcDh.jVCBAMqOdl8rMvbZQdNvZ9m5MNjfnm2'));
 */
 
-use session\sessionManager;
-
+/*use session\sessionManager;
 $sessionManager = new sessionManager();
 if($sessionManager->isLoggedIn()) {
     var_dump($sessionManager->getLoggedInUser()->getAttribute("email"));
 }else {
     echo "not logged in";
-}
+}*/
+
+use email\email;
+
+$email = new email();
+$email->sendStyled("mail@fractava.com", "trefflerj@web.de", "Test", "<b>Trololololo 3</b>", "support@fractava.com");

@@ -13,6 +13,7 @@ getSites()
 .then(initVue)
 .then(function(){
     console.log(vueRoutes);
+    modules.accountContainer.update();
 });
 
 function getSites() {
@@ -36,10 +37,26 @@ function assembleSideRoutes() {
             vueRoutes.push(route);
         });
         
-        let route = {};
-        route["path"] = "*";
-        route["redirect"] = defaultSide;
-        vueRoutes.push(route);
+        let loginRoute = {};
+        loginRoute.path = "/login";
+        loginRoute["beforeEnter"] = function(to, from, next) {
+            modules.dialogs.loginDialog();
+            next(defaultSide);
+        };
+        vueRoutes.push(loginRoute);
+        
+        let registerRoute = {};
+        registerRoute.path = "/register";
+        registerRoute["beforeEnter"] = function(to, from, next) {
+            modules.dialogs.registerDialog();
+            next(defaultSide);
+        };
+        vueRoutes.push(registerRoute);
+        
+        let defaultRoute = {};
+        defaultRoute.path = "*";
+        defaultRoute.redirect = defaultSide;
+        vueRoutes.push(defaultRoute);
         
         resolve();
     });

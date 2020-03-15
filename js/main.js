@@ -3,11 +3,13 @@ import * as modules from "/js/modules/modules.js";
 var router;
 var vm;
 
-initModules()
-.then(modules.vueRouter.getRouter)
-.then(function(getRouter) {
-    router = getRouter;
-    initVue();
+$(document).ready(function(){
+    initModules()
+    .then(modules.vueRouter.getRouter)
+    .then(function(getRouter) {
+        router = getRouter;
+        initVue();
+    });
 });
 
 function initVue() {

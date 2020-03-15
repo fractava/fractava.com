@@ -1,20 +1,10 @@
-import * as sectionNavigation from "/js/modules/sectionNavigation.js";
 import * as stylesheetLoader from "/js/modules/stylesheetLoader.js";
+import * as sectionNavigation from "/js/modules/sectionNavigation.js";
 
 var sides = [];
 var vueRoutes = [];
 var router;
-var vm;
 var defaultSide = "/home";
-
-getSites()
-.then(assembleSideRoutes)
-.then(initVueRouter)
-.then(initNavigationGuard)
-.then(initVue)
-.then(function(){
-    console.log(vueRoutes);
-});
 
 function getSites() {
     return new Promise(function(resolve,reject){
@@ -23,53 +13,6 @@ function getSites() {
             resolve();
         }});
     });
-}
-function assembleSideRoutes() {
-    return new Promise(function(resolve,reject){
-        sides.forEach(function(sideName) {
-            let route = {};
-            
-            route.path = "/" + sideName;
-            
-            let component = () => getComponent(sideName);
-            route.component = component;
-            
-            vueRoutes.push(route);
-        });
-        
-        let route = {};
-        route["path"] = "*";
-        route["redirect"] = defaultSide;
-        vueRoutes.push(route);
-        
-        resolve();
-    });
-}
-function initVue() {
-    return new Promise(function(resolve,reject){
-        vm = new Vue({
-            router,
-            data : () => ({
-            }),
-            watch : {
-            },
-            methods : {
-            }
-        }).$mount("#app");
-        resolve();
-  });
-}
-function initVueRouter(){
-  return new Promise(function(resolve,reject){
-    router = new VueRouter({
-        routes: vueRoutes,
-        mode: 'history',
-        scrollBehavior (to, from, savedPosition) {
-            return { x: 0, y: 0 }
-        }
-    });
-    resolve();
-  });
 }
 function getComponent(sideName) {
     return new Promise(function(resolve,reject){
@@ -143,8 +86,62 @@ function getComponent(sideName) {
         }
     });
 }
+function assembleSideRoutes() {
+    return new Promise(function(resolve,reject){
+        sides.forEach(function(sideName) {
+            let route = {};
+            
+            route.path = "/" + sideName;
+            
+            let component = () => getComponent(sideName);
+            route.component = component;
+            
+            vueRoutes.push(route);
+        });
+        
+        let loginRoute = {};
+        loginRoute.path = "/login";
+        loginRoute["beforeEnter"] = function(to, from, next) {
+            modules.dialogs.loginDialog();
+            next(defaultSide);
+        };
+        vueRoutes.push(loginRoute);
+        
+        let registerRoute = {};
+        registerRoute.path = "/register";
+        registerRoute["beforeEnter"] = function(to, from, next) {
+            modules.dialogs.registerDialog();
+            next(defaultSide);
+        };
+        vueRoutes.push(registerRoute);
+        
+        let defaultRoute = {};
+        defaultRoute.path = "*";
+        defaultRoute.redirect = defaultSide;
+        vueRoutes.push(defaultRoute);
+        
+        resolve();
+    });
+}
+function initVueRouter(){
+  return new Promise(function(resolve,reject){
+    router = new VueRouter({
+        routes: vueRoutes,
+        mode: 'history',
+        scrollBehavior (to, from, savedPosition) {
+            return { x: 0, y: 0 }
+        }
+    });
+    resolve();
+  });
+}
+
 function initNavigationGuard(){
     return new Promise(function(resolve,reject){
+        router.beforeEach((to, from, next) => {
+            $("html").addClass("loading");
+            next();
+        });
         router.afterEach((to, from) => {
             setTimeout(function() {
                 console.log(to);
@@ -152,7 +149,21 @@ function initNavigationGuard(){
                 sectionNavigation.setupEventHandlers();
             }, 1000);
             document.title = to.matched[0].components.default.props.title.default + " - FRACTAVA";
+            $("html").removeClass("loading");
 	    });
         resolve();
     });
 }
+function getRouter() {
+    return new Promise(function(resolve,reject){
+        getSites()
+        .then(assembleSideRoutes)
+        .then(initVueRouter)
+        .then(initNavigationGuard)
+        .then(function() {
+            resolve(router);
+        });
+    });
+}
+
+export{getRouter};

@@ -1,12 +1,19 @@
+html {
+    background-color: black;
+}
 body {
     margin: 0px;
     padding: 0px !important;
     overflow: initial !important;
+    transition: opacity 0.5s ease;
+}
+html.loading body {
+    opacity: 0;
 }
 #app {
     min-height: 100%;
 }
-#app > div[id$='Container']:not(#navBarContainer) {
+#app > div[id$='Container']:not(#navBarContainer):not(#accountContainer) {
     padding-bottom: 10px;
     width: 100% !important;
     min-height: 100%;
@@ -36,9 +43,12 @@ body {
 #footerSection {
     padding: 10px;
     font-family: timeburner;
-    text-align: center;
+    background-color: black;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
-#footerSection > a {
+#footerSection a {
     color: white;
     text-decoration: none;
     margin-right: 10px;

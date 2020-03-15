@@ -1,7 +1,8 @@
-$(window).scroll(function() {
-	updateNavColors();
-});
-
+function init() {
+    $(window).scroll(function() {
+    	updateNavColors();
+    });
+}
 
 // main functions
 function updateNavColors() {
@@ -89,4 +90,4 @@ function collidesWith (element1, element2) {
   return (Element1.right > Element2.left && Element1.left < Element2.right && Element1.top < Element2.bottom && Element1.bottom > Element2.top);
 }
 
-export{setUpNavPoints, setupEventHandlers, updateNavColors, ScrollToSection, ScrollToElement};
+export{init, setUpNavPoints, setupEventHandlers, updateNavColors, ScrollToSection, ScrollToElement};

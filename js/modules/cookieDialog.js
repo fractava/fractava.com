@@ -1,16 +1,17 @@
 import * as cookies from "/js/modules/cookies.js";
 import * as googleAnalytics from "/js/modules/googleAnalytics.js";
 
-checkCookiePermission();
-
-$("#acceptCookiesButton").click(function() {
-    acceptCookies();
-});
-
-$("#declineCookiesButton").click(function() {
-    declineCookies();
-});
-
+function init() {
+    checkCookiePermission();
+    
+    $("#acceptCookiesButton").click(function() {
+        acceptCookies();
+    });
+    
+    $("#declineCookiesButton").click(function() {
+        declineCookies();
+    });
+}
 function checkCookiePermission(){
   if(cookies.getCookie("cookieLevel") == ""){
     console.log("hello");
@@ -31,4 +32,4 @@ function declineCookies(){
     $("#cookieAlert").hide();
 }
 
-export{checkCookiePermission, acceptCookies, declineCookies};
+export{init, checkCookiePermission, acceptCookies, declineCookies};

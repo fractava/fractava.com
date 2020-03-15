@@ -1,6 +1,6 @@
 import * as network from "/js/modules/network.js";
 import * as lang from "/js/modules/language.js";
-import * as accountContainer from "/js/modules/accountContainer.js";
+import * as account from "/js/modules/account.js";
 
 function loginDialog(){
     htmlDialog({
@@ -19,7 +19,7 @@ function loginDialog(){
             console.log(result);
             network.actionRequest({"action": "login", "email": result.value.email, "password": result.value.password}, true, true)
             .then(function() {
-                accountContainer.update();
+                account.checkLoggedIn();
             });
         }
     });

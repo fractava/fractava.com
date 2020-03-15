@@ -1,8 +1,6 @@
 var language;
 
-initLang();
-
-function initLang() {
+function init() {
     return new Promise(function(resolve,reject){
         let languageName = "de";
         $.get({
@@ -19,4 +17,4 @@ function get(name) {
     return language[name];
 }
 
-export{initLang, get};
+export{init, get};

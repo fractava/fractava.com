@@ -1,8 +1,10 @@
-refreshCSSClasses();
-
-window.addEventListener('resize', function(event){
+function init() {
     refreshCSSClasses();
-});
+    
+    window.addEventListener('resize', function(event){
+        refreshCSSClasses();
+    });
+}
 function refreshCSSClasses(){
     return new Promise(function(resolve,reject){
         let md = new MobileDetect(window.navigator.userAgent);
@@ -16,4 +18,4 @@ function refreshCSSClasses(){
     });
 }
 
-export{refreshCSSClasses};
+export{init, refreshCSSClasses};

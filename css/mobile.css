@@ -17,7 +17,7 @@ html.mobile #accountContainer {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: black;
     overflow-x: hidden;
     padding-top: 8vh;
     transition: 0.5s;
@@ -31,8 +31,8 @@ html.mobile #accountContainer {
     display: block;
     font-family: timeburner;
 }
-#mobileSidenav a.router-link-active {
-    font-size: 6vh;
+#mobileSidenav a.router-link-active > span {
+    border-bottom: 7px solid white;
 }
 
 .sidenav .closebtn {

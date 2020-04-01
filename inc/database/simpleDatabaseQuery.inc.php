@@ -7,8 +7,8 @@ class simpleDatabaseQuery {
     public $statement;
 
     function __construct($sql,$parameters) {
-        $databaseController = new databaseController();
-        $this->statement = $databaseController->prepare($sql);
+        $this->databaseController = new databaseController();
+        $this->statement = $this->databaseController->prepare($sql);
         $this->statement->execute($parameters);
     }
     function fetchAll() {

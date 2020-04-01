@@ -32,7 +32,21 @@ if($sessionManager->isLoggedIn()) {
     echo "not logged in";
 }*/
 
-use email\email;
-
+/*use email\email;
 $email = new email();
-$email->sendStyled("mail@fractava.com", "trefflerj@web.de", "Test", "<b>Trololololo 3</b>", "support@fractava.com");
+$email->sendStyled("mail@fractava.com", "trefflerj@web.de", "Test", "<b>Trololololo 3</b>", "support@fractava.com");*/
+
+/*use database\databaseQuery;
+$databaseQuery = new databaseQuery();
+var_dump($databaseQuery->getEntries("blogEntries", 2, 1, "createdAt"));*/
+
+/*use database\selectQuery;
+$selectQuery = new selectQuery();
+$selectQuery->from("blogEntries");
+//$selectQuery->getAll();
+$selectQuery->get(array("headline"));
+//$selectQuery->get("test");
+$selectQuery->where("id", "2");
+$selectQuery->limit(1);
+//$selectQuery->offset(0);
+var_dump($selectQuery->run());*/

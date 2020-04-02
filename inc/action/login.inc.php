@@ -2,11 +2,9 @@
 
 namespace action;
 
-use database\simpleDatabaseQuery;
 use user\userManagement;
 
 class login extends \network\action{
-    
     public function init(){
         $this->userManagement = new userManagement();
         return $this->userManagement->checkLogin($this->params['email'], $this->params['password']);

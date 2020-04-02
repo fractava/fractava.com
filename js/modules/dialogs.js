@@ -71,8 +71,7 @@ function registerDialog(){
         }
     }).then(function(result) {
         if(!result.dismiss){
-            console.log(result);
-            
+            account.checkLoggedIn();
         }
     });
 }

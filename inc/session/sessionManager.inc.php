@@ -3,6 +3,7 @@ namespace session;
 
 use user\user;
 use cookies\cookieManager;
+use database\selectQuery;
 
 class sessionManager {
     function sessionStart() {
@@ -21,8 +22,18 @@ class sessionManager {
     }
     function isLoggedIn() {
         $this->sessionStart();
+        $cookieManager = new cookieManager();
+        
         if(isset($_SESSION['userid'])){
-            return true;
+            $query = new selectQuery();
+            $query
+            ->from("securityTokens")
+            ->getCountOf("id")
+            ->where("identifier", $_COOKIE["identifier"])
+            ->and('securitytoken', sha1($_COOKIE["securitytoken"]))
+            ->and("user_id", $_SESSION['userid']);
+            
+            return $query->run()[0][0] == "1";
         }else {
             $this->sessionClose();
             return false;

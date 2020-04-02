@@ -5,6 +5,7 @@ use database\databaseController;
 
 class simpleDatabaseQuery {
     public $statement;
+    private $databaseController;
 
     function __construct($sql,$parameters) {
         $this->databaseController = new databaseController();

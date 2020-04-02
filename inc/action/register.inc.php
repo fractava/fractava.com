@@ -3,6 +3,7 @@ namespace action;
 
 use password\encryption;
 use database\simpleDatabaseQuery;
+use database\selectQuery;
 
 class register extends \network\action {
     public function init() {
@@ -32,21 +33,29 @@ class register extends \network\action {
         
         
         if(empty($errors)) {
-        	$emailAvailableQuery = new simpleDatabaseQuery("SELECT * FROM users WHERE email = :email", array('email' => $this->email));
-        	$emailRegistered = $emailAvailableQuery->fetch();
+        	$emailAvailableQuery = new selectQuery();
+        	$emailAvailableQuery
+        	->from("users")
+        	->getAll()
+        	->where("email", $this->email);
+        	$emailRegistered = $emailAvailableQuery->run();
         	
-        	if($emailRegistered !== false) {
+        	if(!empty($emailRegistered)) {
         		$errors[] = 5;
-        	}	
+        	}
         }
         
     	if(empty($errors)) {
-    		$usernameAvailableQuery = new simpleDatabaseQuery("SELECT * FROM users WHERE username = :username", array('username' => $this->username));
-    		$usernameRegistered = $usernameAvailableQuery->fetch();
-    		
-    		if($usernameRegistered !== false) {
-    			$errors[] = 6;
-    		}
+        	$usernameAvailableQuery = new selectQuery();
+        	$usernameAvailableQuery
+        	->from("users")
+        	->getAll()
+        	->where("username", $this->username);
+        	$usernameRegistered = $usernameAvailableQuery->run();
+        	
+        	if(!empty($usernameRegistered)) {
+        		$errors[] = 6;
+        	}
     	}
     	
     	return $errors;

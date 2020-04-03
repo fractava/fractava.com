@@ -25,7 +25,6 @@
     	<title>FRACTAVA</title>
     </head>
     <body>
-
     	<div id="app">
     	   <div id="cookieAlert">
                 <p id="cookieAlertHeadline">{{ modules.language.get("cookiesAllowed") }}</p>
@@ -40,14 +39,20 @@
             </div>
             <div id="accountContainer">
                 <div id="accountContainerNotLoggedIn">
-                    <button v-on:click="modules.dialogs.registerDialog()" class="button transparentBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText" id="accountRegister">Register</button>
-                    <button v-on:click="modules.dialogs.loginDialog()" class="button whiteBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText" id="accountLogin">Login</button>
+                    <button v-on:click="modules.dialogs.registerDialog()" class="button transparentBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText" id="accountRegister">{{ modules.language.get("register") }}</button>
+                    <button v-on:click="modules.dialogs.loginDialog()" class="button whiteBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText" id="accountLogin">{{ modules.language.get("login") }}</button>
                 </div>
                 <div id="accountContainerLoggedIn" style="display: none;">
-                    <!--<img id="avatar">-->
-                    <span class="textWhite" id="accountUsername"></span>
-                    <span class="textWhite"> | </span>
-                    <button v-on:click="modules.account.logout()" id="accountLogout" class="button transparentBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText">Logout</button>
+                    <div id="avatar">
+                        <img v-on:click="modules.account.toggleDropdown()" id="avatarImg">
+                        <div id="avatarDropdown">
+                            <span class="textBlack textCentered" id="accountUsername"></span>
+                            <button id="accountSettings" class="button blackBorder transparentBackground blackHoverBorder blackHoverBackground blackText whiteHoverText">
+                                <router-link class="navBarItem" to="/settings">{{ modules.language.get("settings") }}</router-link>
+                            </button>
+                            <button v-on:click="modules.account.logout()" id="accountLogout" class="button blackBorder transparentBackground blackHoverBorder blackHoverBackground blackText whiteHoverText">{{ modules.language.get("logout") }}</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="mobileSidenav" class="sidenav">

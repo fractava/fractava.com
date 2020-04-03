@@ -11,6 +11,8 @@
     "products": "Products",
     "login": "Login",
     "register": "Register",
+    "logout": "Logout",
+    "settings": "Settings",
     "cookiesAllowed": "Is this website allowed to use cookies ?",
     "yes": "Yes",
     "no": "No",

@@ -33,10 +33,37 @@ html.no-mobile #openMobileSidenavDiv {
     right: 10px;
     font-family: timeburner;
 }
+
+/*  Avatar */
 #avatar {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    image-rendering: pixelated;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+}
+#avatarImg {
+    width: 5vw;
+    border-radius: .3125em;
+}
+#avatarDropdown {
+  display: none;
+  background-color: white;
+  min-width: 160px;
+  padding: 12px 16px;
+  z-index: 1;
+  flex-flow: column;
+  flex-wrap: wrap;
+  border-radius: .3125em 0px .3125em .3125em;
+}
+#avatarDropdown>* {
+    padding: 12px 16px;
+    margin-bottom: 3px;
+}
+#avatar.active #avatarImg{
+    border-radius: .3125em .3125em 0px 0px;
+}
+#avatar.active #avatarDropdown {
+  display: flex;
 }
 /* Navbar */
 #navBarContainer {

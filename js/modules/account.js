@@ -27,12 +27,19 @@ function updateAccountContainer() {
         $("#accountUsername").text(username);
         $("#accountContainerNotLoggedIn").hide();
         $("#accountContainerLoggedIn").show();
+        $("#avatarImg").attr("src", "/getData.php?getData=avatar&username="+username);
     }else {
         $("#accountContainerLoggedIn").hide();
         $("#accountContainerNotLoggedIn").show();
     }
 }
-function login(username, password) {
+function toggleDropdown() {
+    $("#avatar").toggleClass("active");
+}
+function closeDropdown() {
+    $("#avatar").removeClass("active");
+}
+function login(email, password) {
     
 }
 function logout() {
@@ -48,4 +55,4 @@ function getUsername() {
     return username;
 }
 
-export{init, getLoggedIn, getUsername, checkLoggedIn, login, logout};
+export{init, getLoggedIn, getUsername, checkLoggedIn, toggleDropdown, closeDropdown, login, logout};

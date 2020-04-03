@@ -19,5 +19,4 @@ class avatarManager {
             return $image->getImage($id, $avatar["filetype"]);
         }
     }
-    
 }

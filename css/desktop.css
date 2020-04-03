@@ -33,7 +33,11 @@ html.no-mobile #openMobileSidenavDiv {
     right: 10px;
     font-family: timeburner;
 }
-
+#avatar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 /* Navbar */
 #navBarContainer {
     position: absolute;

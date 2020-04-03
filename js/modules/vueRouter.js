@@ -14,7 +14,7 @@ function getSites() {
         }});
     });
 }
-function getComponent(sideName) {
+function getComponent(side) {
     return new Promise(function(resolve,reject){
         let template;
         let sideFile;
@@ -31,7 +31,7 @@ function getComponent(sideName) {
         function getTemplate() {
             return new Promise(function(resolve,reject){
                 $.get({
-                    "url": "/sites/" + sideName + ".html",
+                    "url": "/sites/" + side["template"],
                     "dataType": "text",
                     "success": function(data) {
                         template = data;
@@ -43,7 +43,7 @@ function getComponent(sideName) {
         
         function getSideFile() {
             return new Promise(function(resolve,reject){
-                let url = "/sites/" + sideName + ".js";
+                let url = "/sites/" + side["js"];
                 import(url).then(function(data){
                     sideFile = data.site;
                     resolve();
@@ -53,7 +53,7 @@ function getComponent(sideName) {
         
         function loadCSS(){
             return new Promise(function(resolve,reject){
-                stylesheetLoader.load("/sites/" + sideName + ".css");
+                stylesheetLoader.load("/sites/" + side["css"]);
                 resolve();
             });
         }
@@ -88,17 +88,23 @@ function getComponent(sideName) {
 }
 function assembleSideRoutes() {
     return new Promise(function(resolve,reject){
-        sides.forEach(function(sideName) {
+        Object.keys(sides).forEach(function (sidePath) {
+            let side = sides[sidePath];
             let route = {};
             
-            route.path = "/" + sideName;
+            route.path = "/" + sidePath;
             
-            let component = () => getComponent(sideName);
+            let component = () => getComponent(side);
             route.component = component;
             
             vueRoutes.push(route);
         });
         
+        resolve();
+    });
+}
+function assembleSpecialSideRoutes(modules) {
+    return new Promise(function(resolve,reject){
         let loginRoute = {};
         loginRoute.path = "/login";
         loginRoute["beforeEnter"] = function(to, from, next) {
@@ -114,6 +120,14 @@ function assembleSideRoutes() {
             next(defaultSide);
         };
         vueRoutes.push(registerRoute);
+        
+        let logoutRoute = {};
+        logoutRoute.path = "/logout";
+        logoutRoute["beforeEnter"] = function(to, from, next) {
+            modules.account.logout();
+            next(defaultSide);
+        };
+        vueRoutes.push(logoutRoute);
         
         let defaultRoute = {};
         defaultRoute.path = "*";
@@ -154,10 +168,13 @@ function initNavigationGuard(){
         resolve();
     });
 }
-function getRouter() {
+function getRouter(modules) {
     return new Promise(function(resolve,reject){
         getSites()
         .then(assembleSideRoutes)
+        .then(function() {
+            assembleSpecialSideRoutes(modules);
+        })
         .then(initVueRouter)
         .then(initNavigationGuard)
         .then(function() {

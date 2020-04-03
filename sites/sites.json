@@ -1,1 +1,27 @@
-["home", "products", "policy", "impressum"]
+{
+    "home": {
+        "js": "home/home.js",
+        "template": "home/home.html",
+        "css": "home/home.css"
+    },
+    "products": {
+        "js": "products/products.js",
+        "template": "products/products.html",
+        "css": "products/products.css"
+    },
+    "policy": {
+        "js": "policy/policy.js",
+        "template": "policy/policy.html",
+        "css": "policy/policy.css"
+    },
+    "impressum": {
+        "js": "impressum/impressum.js",
+        "template": "impressum/impressum.html",
+        "css": "impressum/impressum.css"
+    },
+    "settings": {
+        "js": "settings/settings.js",
+        "template": "settings/settings.html",
+        "css": "settings/settings.css"
+    }
+}

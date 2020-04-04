@@ -1,2 +1,30 @@
-<div id="settingsContainer" style="width: 100%; height: 100%; background-color: black;">
+<div id="settingsContainer">
+    <!-- Cathegories: General, Security; Personalisation -->
+    <div id="settings">
+        <div id="settingsCategories">
+            <div class="settingsCategorie" v-on:click="categorie = 'general'" v-bind:class="{ active:  categorie == 'general'}">
+                <img src="sites/settings/assets/general.svg">
+                <p>{{ lang["personalSettings"] }}</p>
+            </div>
+            <div class="settingsCategorie" v-on:click="categorie = 'personalization'" v-bind:class="{ active:  categorie == 'personalization'}">
+                <img src="sites/settings/assets/personalization.svg">
+                <p>{{ lang["personalizationSettings"] }}</p>
+            </div>
+            <div class="settingsCategorie" v-on:click="categorie = 'security'" v-bind:class="{ active:  categorie == 'security'}">
+                <img src="sites/settings/assets/security.svg">
+                <p>{{ lang["securitySettings"] }}</p>
+            </div>
+        </div>
+        <div id="settingsContent">
+            <div class="settingsCategorieContent" v-show="categorie == 'general'">
+                <p>Generellll</p>
+            </div>
+            <div class="settingsCategorieContent" v-show="categorie == 'personalization'">
+                <p>Personalisierung</p>
+            </div>
+            <div class="settingsCategorieContent" v-show="categorie == 'security'">
+                <p>security</p>
+            </div>
+        </div>
+    </div>
 </div>

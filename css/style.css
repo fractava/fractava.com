@@ -1,22 +1,24 @@
 html {
     background-color: black;
+    height: 100%;
 }
 body {
     margin: 0px;
     padding: 0px !important;
     overflow: initial !important;
     transition: opacity 0.5s ease;
+    height: 100%;
 }
 html.loading body {
     opacity: 0;
 }
 #app {
     min-height: 100%;
+    position:relative;
 }
 #app > div[id$='Container']:not(#navBarContainer):not(#accountContainer) {
-    padding-bottom: 10px;
     width: 100% !important;
-    min-height: 100vh;
+    padding-bottom:60px;
 }
 .FullHeight {
     height: 100vh;
@@ -38,13 +40,16 @@ html.loading body {
 }
 .scrollTriangle {
     font-size: 56px;
-    position: absolute;
-    bottom: 10px;
+    position: relative;
+    top: 90vh;
     left: 50%;
     text-align: center;
 }
 #footerSection {
-    padding: 10px;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;
     font-family: timeburner;
     background-color: black;
     display: flex;

@@ -46,7 +46,8 @@ html.no-mobile #openMobileSidenavDiv {
     border-radius: .3125em;
 }
 #avatarDropdown {
-  display: none;
+  /*display: none;*/
+  display: flex;
   background-color: white;
   min-width: 160px;
   padding: 12px 16px;
@@ -54,17 +55,23 @@ html.no-mobile #openMobileSidenavDiv {
   flex-flow: column;
   flex-wrap: wrap;
   border-radius: .3125em 0px .3125em .3125em;
+  transition: all .1s ease-in-out;
+  opacity: 0;
 }
-#avatarDropdown>* {
+#avatar.active #avatarDropdown {
+  opacity: 1;
+}
+#avatarDropdown span, #avatarDropdown button {
     padding: 12px 16px;
     margin-bottom: 3px;
+}
+#avatarDropdown button, #avatarDropdown a {
+    width: 100%;
 }
 #avatar.active #avatarImg{
     border-radius: .3125em .3125em 0px 0px;
 }
-#avatar.active #avatarDropdown {
-  display: flex;
-}
+
 /* Navbar */
 #navBarContainer {
     position: absolute;

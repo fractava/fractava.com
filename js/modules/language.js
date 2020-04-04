@@ -1,6 +1,15 @@
 var language;
+var languageData;
 
 function init() {
+    return new Promise(function(resolve,reject){
+        loadNavigatorLanguageIfAvailable()
+        .then(function() {
+            resolve();
+        });
+    });
+}
+function loadNavigatorLanguageIfAvailable() {
     return new Promise(function(resolve,reject){
         loadLanguage(navigator.language)
         .then(function() {
@@ -21,17 +30,29 @@ function loadLanguage(languageName) {
             "url": "/lang/" + languageName + ".json",
             "dataType": "json",
             "success": function(data) {
-                language = data;
+                languageData = data;
                 resolve();
             }
         })
         .fail(function() {
             reject();
         })
+        language = languageName;
     });
 }
+function loadModuleLanguage(langArray) {
+    if(langArray[navigator.language]) {
+        return langArray[navigator.language];
+    }else {
+        return langArray["en-US"];
+    }
+    
+}
 function get(name) {
-    return language[name];
+    return languageData[name];
+}
+function getLanguageName() {
+    return language;
 }
 
-export{init, get};
+export{init, loadModuleLanguage, get, getLanguageName};

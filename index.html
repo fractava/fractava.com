@@ -47,9 +47,9 @@
                         <img v-on:click="modules.account.toggleDropdown()" id="avatarImg">
                         <div id="avatarDropdown">
                             <span class="textBlack textCentered" id="accountUsername"></span>
-                            <button id="accountSettings" class="button blackBorder transparentBackground blackHoverBorder blackHoverBackground blackText whiteHoverText">
-                                <router-link class="navBarItem" to="/settings">{{ modules.language.get("settings") }}</router-link>
-                            </button>
+                            <router-link class="navBarItem" to="/settings">
+                                <button id="accountSettings" class="button blackBorder transparentBackground blackHoverBorder blackHoverBackground blackText whiteHoverText">{{ modules.language.get("settings") }}</button>
+                            </router-link>
                             <button v-on:click="modules.account.logout()" id="accountLogout" class="button blackBorder transparentBackground blackHoverBorder blackHoverBackground blackText whiteHoverText">{{ modules.language.get("logout") }}</button>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
             <router-view></router-view>
 
             <section id="footerSection">
-                <div>
+                <div style="padding-top: 10px;">
                     <router-link to="/policy">{{ modules.language.get("privacyPolicy") }}</router-link>
                     <router-link to="/impressum">{{ modules.language.get("legalNotice") }}</router-link>
                 </div>

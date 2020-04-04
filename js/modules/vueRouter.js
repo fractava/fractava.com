@@ -1,5 +1,4 @@
-import * as stylesheetLoader from "/js/modules/stylesheetLoader.js";
-import * as sectionNavigation from "/js/modules/sectionNavigation.js";
+import * as modules from "/js/modules/modules.js";
 
 var sides = [];
 var vueRoutes = [];
@@ -53,29 +52,36 @@ function getComponent(side) {
         
         function loadCSS(){
             return new Promise(function(resolve,reject){
-                stylesheetLoader.load("/sites/" + side["css"]);
+                modules.stylesheetLoader.load("/sites/" + side["css"]);
                 resolve();
             });
         }
         
         function assembleComponent() {
             return new Promise(function(resolve,reject){
+                let props = {
+                    lang: {
+                        type: Object,
+                        default: function () { return modules.language.loadModuleLanguage(sideFile.lang) }
+                    },
+                    title: {
+                        type: String,
+                        default: sideFile.title
+                    }
+                };
+                
+                let data;
+                
+                if(sideFile.data) {
+                    data = function() {return sideFile.data };
+                }else {
+                    data = undefined;
+                }
+                
                 component = {
                     template: template,
-                    props: {
-                        storage: {
-                            type: Object,
-                            default: function () { return {} }
-                        },
-                        lang: {
-                            type: Object,
-                            default: function () { return sideFile.lang }
-                        },
-                        title: {
-                            type: String,
-                            default: sideFile.title
-                        }
-                    },
+                    props: props,
+                    data: data,
                     methods: sideFile.methods,
                     computed : sideFile.computed,
                     watch: sideFile.watch
@@ -103,7 +109,7 @@ function assembleSideRoutes() {
         resolve();
     });
 }
-function assembleSpecialSideRoutes(modules) {
+function assembleSpecialSideRoutes() {
     return new Promise(function(resolve,reject){
         let loginRoute = {};
         loginRoute.path = "/login";
@@ -159,8 +165,8 @@ function initNavigationGuard(){
         router.afterEach((to, from) => {
             setTimeout(function() {
                 console.log(to);
-                sectionNavigation.setUpNavPoints();
-                sectionNavigation.setupEventHandlers();
+                modules.sectionNavigation.setUpNavPoints();
+                modules.sectionNavigation.setupEventHandlers();
             }, 1000);
             document.title = to.matched[0].components.default.props.title.default + " - FRACTAVA";
             $("html").removeClass("loading");
@@ -172,9 +178,7 @@ function getRouter(modules) {
     return new Promise(function(resolve,reject){
         getSites()
         .then(assembleSideRoutes)
-        .then(function() {
-            assembleSpecialSideRoutes(modules);
-        })
+        .then(assembleSpecialSideRoutes)
         .then(initVueRouter)
         .then(initNavigationGuard)
         .then(function() {

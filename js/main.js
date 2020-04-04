@@ -5,9 +5,7 @@ var vm;
 
 $(document).ready(function(){
     initModules()
-    .then(function() {
-        return modules.vueRouter.getRouter(modules)
-    })
+    .then(modules.vueRouter.getRouter)
     .then(function(getRouter) {
         router = getRouter;
         initVue();

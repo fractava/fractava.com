@@ -1,7 +1,10 @@
 var site = {
     "title": "Settings",
     "data": {
-        "categorie": "general"
+        "categorie": "general",
+        "email": "test",
+        "firstName": "test",
+        "lastName": "test"
     },
     "methods": {
     },

@@ -17,6 +17,9 @@ class avatarManager {
         }else if($avatar["type"] == "file") {
             $image = new image();
             return $image->getImage($id, $avatar["filetype"]);
+        }else {
+            $defaultAvatar = new defaultAvatar();
+            return $defaultAvatar->getImage();
         }
     }
 }

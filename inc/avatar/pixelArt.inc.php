@@ -24,7 +24,7 @@ class pixelArt extends avatar {
         	}
         }
         
-        return $im;
+        return $this->imageToString($im);
     }
     private function getPixelArtColors() {
         $query = new selectQuery();

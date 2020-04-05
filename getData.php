@@ -9,12 +9,20 @@ if(isset($getDataName)){
     
     if(class_exists($className)) {
         $getData = new $className;
+        
+        if($getData->clearOutput) {
+            ob_start();
+        }
     
         $errors = $getData->init();
         if(empty($errors)) {
             $results = $getData->run();
         }else {
             http_response_code(400);
+        }
+        
+        if($getData->clearOutput) {
+            ob_get_clean();
         }
         
         if($getData->returnType == "xml") {

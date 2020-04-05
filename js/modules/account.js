@@ -27,7 +27,15 @@ function updateAccountContainer() {
         $("#accountUsername").text(username);
         $("#accountContainerNotLoggedIn").hide();
         $("#accountContainerLoggedIn").show();
-        $("#avatarImg").attr("src", "/getData.php?getData=avatar&username="+username);
+        //$("#avatarImg").attr("src", "/getData.php?getData=avatar&username="+username);
+        network.getDataRequest({"getData": "avatar", "username": username})
+        .then(function(data) {
+            let imageData = $(data).find("imageData")[0].textContent;
+            let avatarType = $(data).find("avatarType")[0].textContent;
+            $("#avatarImg").removeClass("pixelArt default file");
+            $("#avatarImg").addClass(avatarType);
+            $("#avatarImg").attr("src", "data:image/png;base64,"+imageData);
+        });
     }else {
         $("#accountContainerLoggedIn").hide();
         $("#accountContainerNotLoggedIn").show();

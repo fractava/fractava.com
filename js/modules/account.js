@@ -10,7 +10,7 @@ function init() {
     });
 }
 function checkLoggedIn() {
-    network.getDataRequest({"getData": "loggedIn"})
+    network.getDataRequest({"getData": "user:loggedIn"})
     .then(function(data) {
         if($(data).find("isLoggedIn")[0].textContent == "true") {
             loggedIn = true;

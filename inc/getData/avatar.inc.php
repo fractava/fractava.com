@@ -30,8 +30,6 @@ class avatar extends \network\getData{
         $image = $avatar->getAvatarOfUser($this->userid);
         $type = $avatar->getAvatarTypeOfUser($this->userid);
         return array("imageData" => (string)$image, "avatarType" => $type);
-        //header ('Content-Type: image/png');
-        //imagepng($image);
     }
 }
 ?>

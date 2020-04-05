@@ -1,11 +1,12 @@
 {
-    "error0": "Not enough information provided",
+    "error0": "not enough information provided",
     "error1": "unvalid email",
     "error2": "passwords have to be 5 or more characters",
     "error3": "usernames can't include spaces",
     "error4": "usernames can't include special characters",
     "error5": "this email is already registered",
     "error6": "this username is already registered",
+    "error7": "you have to be logged in",
     "error10": "email or password wrong",
     "home": "Home",
     "products": "Products",

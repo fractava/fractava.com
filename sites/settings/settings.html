@@ -18,11 +18,12 @@
         <div id="settingsContent">
             <div id="generalCategorieContent" class="settingsCategorieContent" v-show="categorie == 'general'">
                 <span>Email: </span>
-                <input type="email" id="emailSetting" v-model="email" placeholder="Email" class="inputBlack">
+                <remoteValueInputField getDataValueName="email" getDataValues='{"getData": "user:email"}' placeholder="Email" class="inputBlack"></remoteValueInputField>
                 <span>Vorname: </span>
-                <input type="text" id="firstNameSetting" v-model="firstName" placeholder="Vorname" class="inputBlack">
+                <remoteValueInputField getDataValueName="firstName" getDataValues='{"getData": "user:firstName"}' actionValues='{"action": "user:changeFirstName"}' placeholder="Vorname" class="inputBlack"></remoteValueInputField>
                 <span>Nachnahme: </span>
-                <input type="text" id="lastNameSetting" v-model="lastName" placeholder="Nachname" class="inputBlack">
+                <!--<input type="text" id="lastNameSetting" v-model="lastName" placeholder="Nachname" class="inputBlack">-->
+                <remoteValueInputField getDataValueName="lastName" getDataValues='{"getData": "user:lastName"}' placeholder="Nachname" class="inputBlack"></remoteValueInputField>
             </div>
             <div class="settingsCategorieContent" v-show="categorie == 'personalization'">
                 <p>personalization</p>

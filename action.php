@@ -5,7 +5,7 @@ use xml\xml;
 
 $actionName = $_POST["action"];
 if(isset($actionName)){
-    $className = "action\\" . $actionName;
+    $className = "action\\" . str_replace(":", "\\", $actionName);
     
     if(class_exists($className)) {
         $action = new $className;
@@ -36,5 +36,9 @@ if(isset($actionName)){
         
         header('Content-Type: application/xml; charset=utf-8');
         echo $xml->asXML();
+    }else {
+        http_response_code(404);
     }
+}else {
+    http_response_code(404);
 }

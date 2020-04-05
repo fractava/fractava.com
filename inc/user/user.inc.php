@@ -3,6 +3,7 @@
 namespace user;
 
 use database\selectQuery;
+use database\updateQuery;
 
 class user {
     function __construct($initId) {
@@ -19,6 +20,11 @@ class user {
         return $result;
     }
     function setAttribute($attribute, $value) {
-
+        $query = new updateQuery();
+        $query->update("users")
+        ->set($attribute, $value)
+        ->where("id", $this->id)
+        ->limit(1);
+        $query->run();
     }
 }

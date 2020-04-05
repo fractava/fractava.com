@@ -1,6 +1,6 @@
 <?php
 
-namespace getData;
+namespace getData\user;
 
 use session\sessionManager;
 

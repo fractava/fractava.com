@@ -84,7 +84,8 @@ function getComponent(side) {
                     data: data,
                     methods: sideFile.methods,
                     computed : sideFile.computed,
-                    watch: sideFile.watch
+                    watch: sideFile.watch,
+                    components: sideFile.components
                 };
                 
                 resolve();

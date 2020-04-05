@@ -5,8 +5,8 @@ use xml\xml;
 
 $getDataName = $_GET["getData"];
 if(isset($getDataName)){
-    $className = "getData\\" . $getDataName;
-    
+    $className = "getData\\" . str_replace(":", "\\", $getDataName);
+
     if(class_exists($className)) {
         $getData = new $className;
         
@@ -49,4 +49,6 @@ if(isset($getDataName)){
     }else {
         http_response_code(404);
     }
+}else {
+    http_response_code(404);
 }

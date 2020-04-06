@@ -137,8 +137,6 @@ class updateQuery extends databaseQuery {
     function run() {
         $this->buildSql();
         
-        var_dump($this->sql);
-
         $this->statement = $this->databaseController->prepare($this->sql);
         
         $this->bindVars();

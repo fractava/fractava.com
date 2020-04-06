@@ -17,19 +17,22 @@
         </div>
         <div id="settingsContent">
             <div id="generalCategorieContent" class="settingsCategorieContent" v-show="categorie == 'general'">
-                <span>Email: </span>
-                <remoteValueInputField getDataValueName="email" getDataValues='{"getData": "user:email"}' placeholder="Email" class="inputBlack"></remoteValueInputField>
-                <span>Vorname: </span>
+                <span>{{ lang["email"] }}: </span>
+                <remoteValueInputField getDataValueName="email" getDataValues='{"getData": "user:email"}' actionValues='{"action": "user:changeEmail"}' type="email" placeholder="Email" class="inputBlack"></remoteValueInputField>
+                <span>{{ lang["firstName"] }}: </span>
                 <remoteValueInputField getDataValueName="firstName" getDataValues='{"getData": "user:firstName"}' actionValues='{"action": "user:changeFirstName"}' placeholder="Vorname" class="inputBlack"></remoteValueInputField>
-                <span>Nachnahme: </span>
+                <span>{{ lang["lastName"] }}: </span>
                 <!--<input type="text" id="lastNameSetting" v-model="lastName" placeholder="Nachname" class="inputBlack">-->
-                <remoteValueInputField getDataValueName="lastName" getDataValues='{"getData": "user:lastName"}' placeholder="Nachname" class="inputBlack"></remoteValueInputField>
+                <remoteValueInputField getDataValueName="lastName" getDataValues='{"getData": "user:lastName"}' placeholder="Nachname" actionValues='{"action": "user:changeLastName"}' class="inputBlack"></remoteValueInputField>
             </div>
             <div class="settingsCategorieContent" v-show="categorie == 'personalization'">
-                <p>personalization</p>
+                <p>{{ lang["avatarShape"] }}:</p>
+                <p>{{ lang["avatars"] }}:</p>
             </div>
             <div class="settingsCategorieContent" v-show="categorie == 'security'">
-                <p>security</p>
+                <p>{{ lang["sessions"] }}:</p>
+                <p>{{ lang["changePassword"] }}:</p>
+                <p>{{ lang["deleteAccount"] }}:</p>
             </div>
         </div>
     </div>

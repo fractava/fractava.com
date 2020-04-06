@@ -157,6 +157,9 @@ html.loading body {
     border-bottom: 2px solid black;
     color: black;
 }
+.inputBlack.invalidValue, .inputWhite.invalidValue {
+    border-bottom: 2px solid red;
+}
 
 /* Swal */
 .swal-popup .button, .swal-popup .inputBlack , .swal-popup .inputWhite {

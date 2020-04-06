@@ -1,5 +1,4 @@
 var site = {
-    "title": "Impressum",
     "methods": {
     },
     "computed": {

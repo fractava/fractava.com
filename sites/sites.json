@@ -2,26 +2,51 @@
     "home": {
         "js": "home/home.js",
         "template": "home/home.html",
-        "css": "home/home.css"
+        "css": "home/home.css",
+        "title": {
+            "de-DE": "Start",
+            "en-US": "Home"
+        },
+        "visibleInNavbar": true
     },
     "products": {
         "js": "products/products.js",
         "template": "products/products.html",
-        "css": "products/products.css"
+        "css": "products/products.css",
+        "title": {
+            "de-DE": "Produkte",
+            "en-US": "Products"
+        },
+        "visibleInNavbar": true
     },
     "policy": {
         "js": "policy/policy.js",
         "template": "policy/policy.html",
-        "css": "policy/policy.css"
+        "css": "policy/policy.css",
+        "title": {
+            "de-DE": "Datenschutzerklärung",
+            "en-US": "Privacy Policy"
+        },
+        "visibleInNavbar": false
     },
     "impressum": {
         "js": "impressum/impressum.js",
         "template": "impressum/impressum.html",
-        "css": "impressum/impressum.css"
+        "css": "impressum/impressum.css",
+        "title": {
+            "de-DE": "Impressum",
+            "en-US": "Legal Notice"
+        },
+        "visibleInNavbar": false
     },
     "settings": {
         "js": "settings/settings.js",
         "template": "settings/settings.html",
-        "css": "settings/settings.css"
+        "css": "settings/settings.css",
+        "title": {
+            "de-DE": "Einstellungen",
+            "en-US": "Settings"
+        },
+        "visibleInNavbar": false
     }
 }

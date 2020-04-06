@@ -1,5 +1,4 @@
 var site = {
-    "title": "Settings",
     "data": {
         "categorie": "general",
         "email": "test",

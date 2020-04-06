@@ -21,7 +21,7 @@ function initVue() {
             }),
             watch : {
             },
-            methods : {
+            methods: {
             }
         }).$mount("#app");
         resolve();

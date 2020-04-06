@@ -2,6 +2,7 @@
     "path/subpath": {
         "js": "path to js file",
         "template": "path to template",
-        "css": "path to css"
+        "css": "path to css",
+        "visibleInNavbar": true
     }
 }

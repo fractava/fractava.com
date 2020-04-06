@@ -1,26 +1,27 @@
 import * as modules from "/js/modules/modules.js";
 
-var sides = [];
+var sites = [];
+var navBarLinks = [];
 var vueRoutes = [];
 var router;
-var defaultSide = "/home";
+var defaultSite = "/home";
 
 function getSites() {
     return new Promise(function(resolve,reject){
         $.get({url: "/sites/sites.json", dataType: "json", success: function(data) {
-            sides = data;
+            sites = data;
             resolve();
         }});
     });
 }
-function getComponent(side) {
+function getComponent(site, title) {
     return new Promise(function(resolve,reject){
         let template;
-        let sideFile;
+        let siteFile;
         let component;
         
         getTemplate()
-        .then(getSideFile)
+        .then(getSiteFile)
         .then(loadCSS)
         .then(assembleComponent)
         .then(function(){
@@ -30,7 +31,7 @@ function getComponent(side) {
         function getTemplate() {
             return new Promise(function(resolve,reject){
                 $.get({
-                    "url": "/sites/" + side["template"],
+                    "url": "/sites/" + site["template"],
                     "dataType": "text",
                     "success": function(data) {
                         template = data;
@@ -40,11 +41,11 @@ function getComponent(side) {
             });
         }
         
-        function getSideFile() {
+        function getSiteFile() {
             return new Promise(function(resolve,reject){
-                let url = "/sites/" + side["js"];
-                import(url).then(function(data){
-                    sideFile = data.site;
+                let url = "/sites/" + site["js"];
+                import(url).then(function(data) {
+                    siteFile = data.site;
                     resolve();
                 });
             });
@@ -52,7 +53,7 @@ function getComponent(side) {
         
         function loadCSS(){
             return new Promise(function(resolve,reject){
-                modules.stylesheetLoader.load("/sites/" + side["css"]);
+                modules.resourceLoader.loadCSS("/sites/" + site["css"]);
                 resolve();
             });
         }
@@ -62,30 +63,26 @@ function getComponent(side) {
                 let props = {
                     lang: {
                         type: Object,
-                        default: function () { return modules.language.loadModuleLanguage(sideFile.lang) }
-                    },
-                    title: {
-                        type: String,
-                        default: sideFile.title
+                        default: function () { return modules.language.loadModuleLanguage(siteFile.lang) }
                     }
                 };
                 
-                let data;
+                let data = {};
                 
-                if(sideFile.data) {
-                    data = function() {return sideFile.data };
-                }else {
-                    data = undefined;
+                if(siteFile.data) {
+                    data = Object.assign(data, siteFile.data);
                 }
+                
+                Object.assign(data, {"title": title});
                 
                 component = {
                     template: template,
                     props: props,
-                    data: data,
-                    methods: sideFile.methods,
-                    computed : sideFile.computed,
-                    watch: sideFile.watch,
-                    components: sideFile.components
+                    data: function() {return data},
+                    methods: siteFile.methods,
+                    computed : siteFile.computed,
+                    watch: siteFile.watch,
+                    components: siteFile.components
                 };
                 
                 resolve();
@@ -93,15 +90,26 @@ function getComponent(side) {
         }
     });
 }
-function assembleSideRoutes() {
+function assembleSiteRoutes() {
     return new Promise(function(resolve,reject){
-        Object.keys(sides).forEach(function (sidePath) {
-            let side = sides[sidePath];
+        Object.keys(sites).forEach(function (sitePath) {
+            let site = sites[sitePath];
             let route = {};
             
-            route.path = "/" + sidePath;
+            let title;
             
-            let component = () => getComponent(side);
+            if(site.visibleInNavbar) {
+                if(site.title[navigator.language]) {
+                    title = site.title[navigator.language];
+                }else {
+                    title = site.title["en-US"];
+                }
+                navBarLinks.push({"title": title, "path": "/" + sitePath});
+            }
+            
+            route.path = "/" + sitePath;
+            
+            let component = () => getComponent(site, site.title);
             route.component = component;
             
             vueRoutes.push(route);
@@ -110,13 +118,13 @@ function assembleSideRoutes() {
         resolve();
     });
 }
-function assembleSpecialSideRoutes() {
+function assembleSpecialSiteRoutes() {
     return new Promise(function(resolve,reject){
         let loginRoute = {};
         loginRoute.path = "/login";
         loginRoute["beforeEnter"] = function(to, from, next) {
             modules.dialogs.loginDialog();
-            next(defaultSide);
+            next(defaultSite);
         };
         vueRoutes.push(loginRoute);
         
@@ -124,7 +132,7 @@ function assembleSpecialSideRoutes() {
         registerRoute.path = "/register";
         registerRoute["beforeEnter"] = function(to, from, next) {
             modules.dialogs.registerDialog();
-            next(defaultSide);
+            next(defaultSite);
         };
         vueRoutes.push(registerRoute);
         
@@ -132,13 +140,13 @@ function assembleSpecialSideRoutes() {
         logoutRoute.path = "/logout";
         logoutRoute["beforeEnter"] = function(to, from, next) {
             modules.account.logout();
-            next(defaultSide);
+            next(defaultSite);
         };
         vueRoutes.push(logoutRoute);
         
         let defaultRoute = {};
         defaultRoute.path = "*";
-        defaultRoute.redirect = defaultSide;
+        defaultRoute.redirect = defaultSite;
         vueRoutes.push(defaultRoute);
         
         resolve();
@@ -168,8 +176,14 @@ function initNavigationGuard(){
                 console.log(to);
                 modules.sectionNavigation.setUpNavPoints();
                 modules.sectionNavigation.setupEventHandlers();
-            }, 1000);
-            document.title = to.matched[0].components.default.props.title.default + " - FRACTAVA";
+            }, 1000);  
+            
+            let siteTitleArray = to.matched[0].components.default.data().title;
+            if(siteTitleArray[navigator.language]) {
+                document.title = siteTitleArray[navigator.language] + " - FRACTAVA";
+            }else {
+                document.title = siteTitleArray["en-US"] + " - FRACTAVA";
+            }
             $("html").removeClass("loading");
 	    });
         resolve();
@@ -178,14 +192,15 @@ function initNavigationGuard(){
 function getRouter(modules) {
     return new Promise(function(resolve,reject){
         getSites()
-        .then(assembleSideRoutes)
-        .then(assembleSpecialSideRoutes)
+        .then(assembleSiteRoutes)
+        .then(assembleSpecialSiteRoutes)
         .then(initVueRouter)
         .then(initNavigationGuard)
         .then(function() {
+            console.log(navBarLinks);
             resolve(router);
         });
     });
 }
 
-export{getRouter};
+export{getRouter, navBarLinks};

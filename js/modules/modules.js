@@ -1,6 +1,6 @@
 import * as network from "/js/modules/network.js";
 import * as dialogs from "/js/modules/dialogs.js";
-import * as stylesheetLoader from "/js/modules/stylesheetLoader.js";
+import * as resourceLoader from "/js/modules/resourceLoader.js";
 import * as cookieDialog from "/js/modules/cookieDialog.js";
 import * as mobileDetect from "/js/modules/mobileDetect.js";
 import * as sectionNavigation from "/js/modules/sectionNavigation.js";
@@ -11,4 +11,4 @@ import * as vueComponents from "/js/modules/vueComponents.js";
 import * as account from "/js/modules/account.js";
 import * as language from "/js/modules/language.js";
 
-export{network, dialogs, stylesheetLoader, cookieDialog, mobileDetect, sectionNavigation, cookies, sidenav, vueRouter, vueComponents, account, language};
+export{network, dialogs, resourceLoader, cookieDialog, mobileDetect, sectionNavigation, cookies, sidenav, vueRouter, vueComponents, account, language};

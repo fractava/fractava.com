@@ -136,6 +136,7 @@ html.loading body {
     padding: 6px 4px;
     margin-bottom: 20px;
     transition: all .1s ease-in-out;
+    font-family: timeburner;
 }
 .inputBlack {
     background-color: black;

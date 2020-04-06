@@ -1,5 +1,4 @@
 var site = {
-    "title": "Produkte",
     "methods": {
     },
     "computed": {

@@ -58,6 +58,26 @@ function init() {
             "template": '<input v-model:value="value"></input>'
         });
         
+        Vue.component('avatar', {
+            "props": [
+                'username'
+            ],
+            "data": function () {
+                return {
+                    modules: modules
+                };
+            },
+            "methods": {
+                "load": function() {
+                    
+                }
+            },
+            "mounted": function () {
+                this.load();
+            },
+            "template": '<img v-on:click="modules.account.toggleDropdown()" class="avatarImg">'
+        });
+        
         resolve();
     });
 }

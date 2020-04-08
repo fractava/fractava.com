@@ -162,6 +162,25 @@ html.loading body {
     border-bottom: 2px solid red;
 }
 
+/* Fonts */
+@font-face {
+	font-family: 'nextfont';
+	src: url('/assets/fonts/thenextfont-webfont.woff2') format('woff2'),
+	url('/assets/fonts/thenextfont-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'timeburner';
+	src: url('/assets/fonts/timeburnerbold-webfont.woff2') format('woff2'),
+	url('/assets/fonts/timeburnerbold-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* Swal */
 .swal-popup .button, .swal-popup .inputBlack , .swal-popup .inputWhite {
     width: 90%;
@@ -175,4 +194,99 @@ html.loading body {
 }
 .swal-close-button:hover {
     color: black !important;
+}
+
+/* Cookie Alert */
+html.phone .cookieAlert {
+    width: 100%;
+    height: 100%;
+}
+html.phone .cookieAlert .swal2-content {
+    font-size: 50px;
+}
+html.phone .cookieAlert .swal2-actions {
+    width: 100%;
+}
+html.phone .cookieAlert .button {
+    width: 50%;
+}
+html.phone .cookieAlertContainer {
+    padding: 0;
+}
+#cookieAlert {
+    display: none;
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    background-color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    z-index: 3000;
+    
+}
+html.mobile #cookieAlert {
+    width: 100%;
+    height: 40%;
+}
+#cookieAlertHeadline {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: xx-large;
+    font-family: timeburner;
+}
+#cookieAlert .button {
+    width: 50%;
+}
+#cookieAlert .button:first-child {
+    font-weight: bold;
+}
+html.phone #cookieAlert .button {
+    width: 90% !important;
+    height: 100px;
+    font-size: xx-large;
+}
+html:not(.phone) #cookieAlert .button:not(:last-child) {
+    margin-right: 10px;
+}
+html.phone #cookieAlert .button {
+    margin-bottom: 10px;
+}
+#cookieAlertButtonConatainer {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+}
+html.phone #cookieAlertButtonConatainer {
+    flex-flow: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+
+/* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

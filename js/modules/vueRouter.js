@@ -74,6 +74,7 @@ function getComponent(site, title) {
                 }
                 
                 Object.assign(data, {"title": title});
+                Object.assign(data, {"modules": modules});
                 
                 component = {
                     template: template,
@@ -82,6 +83,7 @@ function getComponent(site, title) {
                     methods: siteFile.methods,
                     computed : siteFile.computed,
                     watch: siteFile.watch,
+                    mounted: siteFile.init,
                     components: siteFile.components
                 };
                 
@@ -197,7 +199,6 @@ function getRouter(modules) {
         .then(initVueRouter)
         .then(initNavigationGuard)
         .then(function() {
-            console.log(navBarLinks);
             resolve(router);
         });
     });

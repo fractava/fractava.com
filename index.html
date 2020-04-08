@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html class="loading">
+<html lang="en" class="loading">
     <head>
+        <link rel="preload" href="/assets/fonts/thenextfont-webfont.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/timeburnerbold-webfont.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/js/modules/account.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/cookieDialog.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/cookies.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/dialogs.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/googleAnalytics.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/language.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/mobileDetect.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/network.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/resourceLoader.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/sectionNavigation.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/sidenav.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/vueComponents.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/vueRouter.js" as="script" crossorigin>
+        <link rel="preload" href="/js/modules/modules.js" as="script" crossorigin>
+        <link rel="preload" href="/js/main.js" as="script" crossorigin>
+        <link rel="preload" href="/sites/home/home.js" as="script" crossorigin>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112803937-1"></script>
-        
+        <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112803937-1"></script>-->
+         
     	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta name="description" content ="FRACTAVA - Wir entwickeln Software und Spiele">
     	<link rel="shortcut icon" type="image/png" href="/assets/img/logo/logo_black.png"/>
-    	
+
     	<link rel="stylesheet" href="/css/style.css">
     	<link rel="stylesheet" href="/css/desktop.css">
     	<link rel="stylesheet" href="/css/mobile.css">
-    	<link rel="stylesheet" href="/css/fonts.css">
-    	<link rel="stylesheet" href="/css/cookieDialog.css">
-    
-    	<script src='/js/libaries/vue.js' defer></script>
+
+    	<!--<script src='/js/libaries/vue.js' defer></script>--><!-- DEV ONLY -->
+    	<script src='/js/libaries/vue.min.js' defer></script>
     	<script src='/js/libaries/vue-router.js' defer></script>
     	<script src='/js/libaries/jquery.min.js' defer></script>
     	<script src='/js/libaries/mobile-detect.js' defer></script>
@@ -63,9 +82,9 @@
             <div id="openMobileSidenavDiv" v-on:click="modules.sidenav.open()">
                 <svg id="openMobileSidenav" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="white" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </div>
-        
-            <router-view></router-view>
-
+            <main>
+                <router-view></router-view>
+            </main>
             <section id="footerSection">
                 <div style="padding-top: 10px;">
                     <router-link to="/policy">{{ modules.language.get("privacyPolicy") }}</router-link>

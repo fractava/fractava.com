@@ -48,5 +48,14 @@
             "en-US": "Settings"
         },
         "visibleInNavbar": false
+    },
+    "pixelArt": {
+        "js": "pixelArt/pixelArt.js",
+        "template": "pixelArt/pixelArt.html",
+        "css": "pixelArt/pixelArt.css",
+        "title": {
+            "en-US": "Pixel Art"
+        },
+        "visibleInNavbar": false
     }
 }

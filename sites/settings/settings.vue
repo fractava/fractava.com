@@ -3,15 +3,15 @@
         <div id="settings">
             <div id="settingsCategories">
                 <div class="settingsCategorie" v-on:click="categorie = 'general'" v-bind:class="{ active:  categorie == 'general'}">
-                    <img src="sites/settings/assets/general.svg">
+                    <img src="./assets/general.svg">
                     <span>{{ lang["personalSettings"] }}</span>
                 </div>
                 <div class="settingsCategorie" v-on:click="categorie = 'personalization'" v-bind:class="{ active:  categorie == 'personalization'}">
-                    <img src="sites/settings/assets/personalization.svg">
+                    <img src="./assets/personalization.svg">
                     <span>{{ lang["personalizationSettings"] }}</span>
                 </div>
                 <div class="settingsCategorie" v-on:click="categorie = 'security'" v-bind:class="{ active:  categorie == 'security'}">
-                    <img src="sites/settings/assets/security.svg">
+                    <img src="./assets/security.svg">
                     <span>{{ lang["securitySettings"] }}</span>
                 </div>
             </div>

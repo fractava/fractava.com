@@ -9,19 +9,10 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      // this will apply to both plain `.css` files
-      // AND `<style>` blocks in `.vue` files
-      {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ]
-      }
+      {test: /\.vue$/, loader: 'vue-loader'},
+      {test: /\.css$/,use: ['vue-style-loader', 'css-loader']},
+      {test: /\.(woff|woff2|eot|ttf|otf)$/, use: ['file-loader']},
+      {test: /\.(png|svg|jpg|gif)$/, use: {"loader": 'file-loader', options: {esModule: false}}},
     ]
   },
   output: {

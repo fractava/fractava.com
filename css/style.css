@@ -1,3 +1,5 @@
+@import "fonts.css";
+
 html {
     background-color: black;
     height: 100%;
@@ -160,25 +162,6 @@ html.loading body {
 }
 .inputBlack.invalidValue, .inputWhite.invalidValue {
     border-bottom: 2px solid red;
-}
-
-/* Fonts */
-@font-face {
-	font-family: 'nextfont';
-	src: url('/assets/fonts/thenextfont-webfont.woff2') format('woff2'),
-	url('/assets/fonts/thenextfont-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'timeburner';
-	src: url('/assets/fonts/timeburnerbold-webfont.woff2') format('woff2'),
-	url('/assets/fonts/timeburnerbold-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
 }
 
 /* Swal */

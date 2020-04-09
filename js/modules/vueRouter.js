@@ -1,51 +1,27 @@
-import * as modules from "/js/modules/modules.js";
+import * as modules from "./modules.js";
+import * as sites from './../../sites/sites.js';
 
-var sites = [];
 var navBarLinks = [];
 var vueRoutes = [];
 var router;
 var defaultSite = "/home";
 
-function getSites() {
+function getComponent(site) {
     return new Promise(function(resolve,reject){
-        $.get({url: "/sites/sites.json", dataType: "json", success: function(data) {
-            sites = data;
-            resolve();
-        }});
-    });
-}
-function getComponent(site, title) {
-    return new Promise(function(resolve,reject){
-        let template;
-        let siteFile;
         let component;
         
-        getTemplate()
-        .then(getSiteFile)
+        createComponent()
         .then(loadCSS)
-        .then(assembleComponent)
+        .then(modifyComponent)
         .then(function(){
             resolve(component);
         });
         
-        function getTemplate() {
+        function createComponent() {
             return new Promise(function(resolve,reject){
-                $.get({
-                    "url": "/sites/" + site["template"],
-                    "dataType": "text",
-                    "success": function(data) {
-                        template = data;
-                        resolve();
-                    }
-                });
-            });
-        }
-        
-        function getSiteFile() {
-            return new Promise(function(resolve,reject){
-                let url = "/sites/" + site["js"];
-                import(url).then(function(data) {
-                    siteFile = data.site;
+                site.vue().then(function(data) {
+                    component = data.default;
+                    
                     resolve();
                 });
             });
@@ -58,34 +34,27 @@ function getComponent(site, title) {
             });
         }
         
-        function assembleComponent() {
+        function modifyComponent() {
             return new Promise(function(resolve,reject){
-                let props = {
-                    lang: {
-                        type: Object,
-                        default: function () { return modules.language.loadModuleLanguage(siteFile.lang) }
-                    }
-                };
-                
-                let data = {};
-                
-                if(siteFile.data) {
-                    data = Object.assign(data, siteFile.data);
+                if(!component.props) {
+                    component.props = {};
                 }
                 
-                Object.assign(data, {"title": title});
-                Object.assign(data, {"modules": modules});
                 
-                component = {
-                    template: template,
-                    props: props,
-                    data: function() {return data},
-                    methods: siteFile.methods,
-                    computed : siteFile.computed,
-                    watch: siteFile.watch,
-                    mounted: siteFile.init,
-                    components: siteFile.components
-                };
+                let lang = modules.language.loadModuleLanguage(component.lang);
+
+                component.props.lang = {
+                    type: Object,
+                    default: function () { return lang}
+                }
+
+                if(!component.data) {
+                    component.data = {};
+                }
+                
+                component.data["modules"] = modules;
+                
+                console.log(component);
                 
                 resolve();
             });
@@ -94,25 +63,27 @@ function getComponent(site, title) {
 }
 function assembleSiteRoutes() {
     return new Promise(function(resolve,reject){
-        Object.keys(sites).forEach(function (sitePath) {
-            let site = sites[sitePath];
+        Object.keys(sites.default).forEach(function (sitePath) {
+            let site = sites.default[sitePath];
+            
             let route = {};
             
             let title;
-            
+            if(site.title[navigator.language]) {
+                title = site.title[navigator.language];
+            }else {
+                title = site.title["en-US"];
+            }
+                
             if(site.visibleInNavbar) {
-                if(site.title[navigator.language]) {
-                    title = site.title[navigator.language];
-                }else {
-                    title = site.title["en-US"];
-                }
                 navBarLinks.push({"title": title, "path": "/" + sitePath});
             }
             
             route.path = "/" + sitePath;
             
-            let component = () => getComponent(site, site.title);
+            let component = () => getComponent(site);
             route.component = component;
+            route.meta = {"title": title};
             
             vueRoutes.push(route);
         });
@@ -156,6 +127,7 @@ function assembleSpecialSiteRoutes() {
 }
 function initVueRouter(){
   return new Promise(function(resolve,reject){
+      console.log(vueRoutes);
     router = new VueRouter({
         routes: vueRoutes,
         mode: 'history',
@@ -174,18 +146,15 @@ function initNavigationGuard(){
             next();
         });
         router.afterEach((to, from) => {
+            console.log(to);
+            
             setTimeout(function() {
-                console.log(to);
                 modules.sectionNavigation.setUpNavPoints();
                 modules.sectionNavigation.setupEventHandlers();
             }, 1000);  
             
-            let siteTitleArray = to.matched[0].components.default.data().title;
-            if(siteTitleArray[navigator.language]) {
-                document.title = siteTitleArray[navigator.language] + " - FRACTAVA";
-            }else {
-                document.title = siteTitleArray["en-US"] + " - FRACTAVA";
-            }
+            document.title = to.meta.title + " - FRACTAVA";
+            
             $("html").removeClass("loading");
 	    });
         resolve();
@@ -193,8 +162,7 @@ function initNavigationGuard(){
 }
 function getRouter(modules) {
     return new Promise(function(resolve,reject){
-        getSites()
-        .then(assembleSiteRoutes)
+        assembleSiteRoutes()
         .then(assembleSpecialSiteRoutes)
         .then(initVueRouter)
         .then(initNavigationGuard)

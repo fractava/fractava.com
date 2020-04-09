@@ -1,4 +1,4 @@
-import * as network from "/js/modules/network.js";
+import * as network from "./network.js";
 
 var loggedIn;
 var username;

@@ -1,4 +1,4 @@
-import * as modules from "/js/modules/modules.js";
+import * as modules from "./modules.js";
 
 function init() {
     return new Promise(function(resolve,reject){

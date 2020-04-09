@@ -1,6 +1,6 @@
-import * as network from "/js/modules/network.js";
-import * as lang from "/js/modules/language.js";
-import * as account from "/js/modules/account.js";
+import * as network from "./network.js";
+import * as lang from "./language.js";
+import * as account from "./account.js";
 
 function loginDialog(){
     htmlDialog({

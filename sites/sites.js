@@ -1,7 +1,6 @@
-{
+export default {
     "home": {
-        "js": "home/home.js",
-        "template": "home/home.html",
+        "vue": () => import("./home/home.vue"),
         "css": "home/home.css",
         "title": {
             "de-DE": "Start",
@@ -10,8 +9,7 @@
         "visibleInNavbar": true
     },
     "products": {
-        "js": "products/products.js",
-        "template": "products/products.html",
+        "vue": () => import("./products/products.vue"),
         "css": "products/products.css",
         "title": {
             "de-DE": "Produkte",
@@ -20,8 +18,7 @@
         "visibleInNavbar": true
     },
     "policy": {
-        "js": "policy/policy.js",
-        "template": "policy/policy.html",
+        "vue": () => import("./policy/policy.vue"),
         "css": "policy/policy.css",
         "title": {
             "de-DE": "Datenschutzerklärung",
@@ -30,8 +27,7 @@
         "visibleInNavbar": false
     },
     "impressum": {
-        "js": "impressum/impressum.js",
-        "template": "impressum/impressum.html",
+        "vue": () => import("./impressum/impressum.vue"),
         "css": "impressum/impressum.css",
         "title": {
             "de-DE": "Impressum",
@@ -40,8 +36,7 @@
         "visibleInNavbar": false
     },
     "settings": {
-        "js": "settings/settings.js",
-        "template": "settings/settings.html",
+        "vue": () => import("./settings/settings.vue"),
         "css": "settings/settings.css",
         "title": {
             "de-DE": "Einstellungen",
@@ -50,8 +45,7 @@
         "visibleInNavbar": false
     },
     "pixelArt": {
-        "js": "pixelArt/pixelArt.js",
-        "template": "pixelArt/pixelArt.html",
+        "vue": () => import("./pixelArt/pixelArt.vue"),
         "css": "pixelArt/pixelArt.css",
         "title": {
             "en-US": "Pixel Art"

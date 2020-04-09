@@ -1,8 +1,11 @@
-{
-    "path/subpath": {
-        "js": "path to js file",
-        "template": "path to template",
-        "css": "path to css",
-        "visibleInNavbar": true
+export default {
+    "example": {
+        "vue": () => import("./example/example.vue"),
+        "css": "example/example.css",
+        "title": {
+            "de-DE": "Beispiel",
+            "en-US": "Example"
+        },
+        "visibleInNavbar": false
     }
 }

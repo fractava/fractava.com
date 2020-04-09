@@ -22,3 +22,17 @@
         }
     }
 </script>
+
+<style>
+    #fractavaNameText{
+        position: relative;
+        left: 50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        color: white;
+        font-family: nextfont;
+        font-size: calc(4vw + 4vh + 2vmin);
+        text-align: center;
+    	margin: 0;
+    }
+</style>

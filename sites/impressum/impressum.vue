@@ -17,3 +17,19 @@ export default {
     }
 }
 </script>
+
+<style>
+    #impressumContainer {
+        background-color: black;
+    }
+    #impressumContainer h1 {
+    	font-family: 'nextfont';
+    	margin: 0;
+    	padding: 48px 48px 32px 48px;
+    	text-align: center;
+    }
+    #impressumContainer p {
+        text-align: center;
+        font-family: timeburner;
+    }
+</style>

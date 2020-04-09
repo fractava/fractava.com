@@ -11,7 +11,7 @@ function getComponent(site) {
         let component;
         
         createComponent()
-        .then(loadCSS)
+        /*.then(loadCSS)*/
         .then(modifyComponent)
         .then(function(){
             resolve(component);
@@ -27,12 +27,12 @@ function getComponent(site) {
             });
         }
         
-        function loadCSS(){
+        /*function loadCSS(){
             return new Promise(function(resolve,reject){
                 modules.resourceLoader.loadCSS("/sites/" + site["css"]);
                 resolve();
             });
-        }
+        }*/
         
         function modifyComponent() {
             return new Promise(function(resolve,reject){

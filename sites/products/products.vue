@@ -15,3 +15,9 @@
         }
     }
 </script>
+
+<style>
+    #productsContainer {
+        background-color: black;
+    }
+</style>

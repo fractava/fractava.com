@@ -67,3 +67,31 @@
         }
     }
 </script>
+
+<style>
+    #policyContainer h1, #policyContainer h2, #policyContainer h3, #policyContainer h4, #policyContainer p, #policyContainer b, #policyContainer a {
+        color: white;
+        text-align: center;
+    }
+    #policyContainer p, #policyContainer b, #policyContainer a {
+        font-family: timeburner;
+    }
+    #policyContainer h1, #policyContainer h2, #policyContainer h3, #policyContainer h4 {
+    	font-family: 'nextfont';
+    	margin: 0;
+    	padding: 48px 48px 32px 48px;
+    }
+    #policyContainer h1 {
+    	font-size: xx-large;
+    }
+    #policyContainer p, #policyContainer a {
+    	font-size: medium;
+    }
+    #policyContainer *:last-child {
+        margin: 0;
+    }
+    #policyContainer {
+        width: 70%;
+        margin: auto;
+    }
+</style>

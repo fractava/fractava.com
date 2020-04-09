@@ -85,3 +85,55 @@
         }
     }
 </script>
+
+<style>
+    #settingsContainer {
+        background-color: black;
+    }
+    #settingsContainer #settings {
+        width: 70%;
+        margin: auto;
+        padding-top: 20vh;
+        font-family: timeburner;
+    }
+    html.phone #settingsContainer #settings {
+        width: 95%;
+    }
+    #settingsContainer #settingsCategories {
+        display: flex;
+        align-items: flex-start;
+        height: 15vh;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    #settingsContainer .settingsCategorie {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        min-width: 10vw;
+        margin-right: 15px;
+    }
+    #settingsContainer .settingsCategorie>img {
+        height: 5vh;
+    }
+    #settingsContainer .settingsCategorie.active {
+        border-bottom: 3px solid white;
+    }
+    #settingsContainer .settingsCategorieContent {
+        color: white;
+        display: grid;
+    }
+    #generalCategorieContent {
+        display: grid;
+        grid-template-columns: [row1-start] auto [row1-end row2-start];
+        grid-template-rows: repeat(3, auto [col-start]);
+    }
+    #generalCategorieContent>span {
+        grid-column: 1;
+    }
+    #generalCategorieContent>input {
+        grid-column: 2
+    }
+</style>

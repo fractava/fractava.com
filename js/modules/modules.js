@@ -11,4 +11,6 @@ import * as sidenav from "./sidenav.js";
 import * as account from "./account.js";
 import * as language from "./language.js";
 
+import css from './../../css/style.css';
+
 export{vueComponents, vueRouter, network, dialogs, resourceLoader, cookieDialog, mobileDetect, sectionNavigation, cookies, sidenav, account, language};

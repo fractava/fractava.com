@@ -8,11 +8,11 @@ body {
     margin: 0px;
     padding: 0px !important;
     overflow: initial !important;
-    transition: opacity 0.5s ease;
     height: 100%;
 }
-html.loading body {
-    opacity: 0;
+html:not(.loading) body {
+    transition: opacity 0.5s ease;
+    opacity: 1 !important;
 }
 #app {
     min-height: 100%;

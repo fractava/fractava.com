@@ -1,5 +1,5 @@
-import * as cookies from "/js/modules/cookies.js";
-import * as googleAnalytics from "/js/modules/googleAnalytics.js";
+import * as cookies from "./cookies.js";
+import * as googleAnalytics from "./googleAnalytics.js";
 
 function init() {
     return new Promise(function(resolve,reject){

@@ -13,7 +13,6 @@ function loadNavigatorLanguageIfAvailable() {
     return new Promise(function(resolve,reject){
         loadLanguage(navigator.language)
         .then(function() {
-            console.log("lang loading successfull");
             resolve();
         })
         .catch(function() {

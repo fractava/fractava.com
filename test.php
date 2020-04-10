@@ -50,3 +50,16 @@ $selectQuery->where("id", "2");
 $selectQuery->limit(1);
 //$selectQuery->offset(0);
 var_dump($selectQuery->run());*/
+
+/*use database\updateQuery;
+$updateQuery = new updateQuery();
+$updateQuery
+->update("users")
+->set("username", "dies wurde eingefügt")
+->set("lastName", "dies wurde eingefügt")
+->where("id", 4)
+->run();*/
+
+/*use user\userManagement;
+$userManagement = new userManagement();
+$userManagement->findById(4)->setAttribute("lastName", "baum");*/

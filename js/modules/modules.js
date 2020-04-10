@@ -1,13 +1,16 @@
-import * as network from "/js/modules/network.js";
-import * as dialogs from "/js/modules/dialogs.js";
-import * as stylesheetLoader from "/js/modules/stylesheetLoader.js";
-import * as cookieDialog from "/js/modules/cookieDialog.js";
-import * as mobileDetect from "/js/modules/mobileDetect.js";
-import * as sectionNavigation from "/js/modules/sectionNavigation.js";
-import * as cookies from "/js/modules/cookies.js";
-import * as sidenav from "/js/modules/sidenav.js";
-import * as vueRouter from "/js/modules/vueRouter.js";
-import * as account from "/js/modules/account.js";
-import * as language from "/js/modules/language.js";
+import * as vueRouter from "./vueRouter.js";
+import * as vueComponents from "./vueComponents.js";
+import * as network from "./network.js";
+import * as dialogs from "./dialogs.js";
+import * as resourceLoader from "./resourceLoader.js";
+import * as cookieDialog from "./cookieDialog.js";
+import * as mobileDetect from "./mobileDetect.js";
+import * as sectionNavigation from "./sectionNavigation.js";
+import * as cookies from "./cookies.js";
+import * as sidenav from "./sidenav.js";
+import * as account from "./account.js";
+import * as language from "./language.js";
 
-export{network, dialogs, stylesheetLoader, cookieDialog, mobileDetect, sectionNavigation, cookies, sidenav, vueRouter, account, language};
+import css from './../../css/style.css';
+
+export{vueComponents, vueRouter, network, dialogs, resourceLoader, cookieDialog, mobileDetect, sectionNavigation, cookies, sidenav, account, language};

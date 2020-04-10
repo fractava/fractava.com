@@ -7,9 +7,9 @@ class image extends avatar{
         $path = $_SERVER['DOCUMENT_ROOT'] . "/assets/img/avatar/$userid.$filetype";
         if(file_exists($path)) {
             if($filetype == "png") {
-                return imagecreatefrompng($path);
+                return $this->imageToString(imagecreatefrompng($path));
             }else if($filetype == "jpg" || $filetype == "jpeg") {
-                return imagecreatefromjpeg($path);
+                return $this->imageToString(imagecreatefromjpeg($path));
             }
         }else {
             return false;

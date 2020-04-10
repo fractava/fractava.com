@@ -36,7 +36,6 @@ html.no-mobile #openMobileSidenavDiv {
 
 /*  Avatar */
 #avatar {
-    image-rendering: pixelated;
     display: flex;
     flex-flow: column;
     align-items: flex-end;
@@ -44,6 +43,9 @@ html.no-mobile #openMobileSidenavDiv {
 #avatarImg {
     width: 5vw;
     border-radius: .3125em;
+}
+#avatarImg.pixelArt {
+    image-rendering: pixelated;
 }
 #avatarDropdown {
   /*display: none;*/

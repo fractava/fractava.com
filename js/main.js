@@ -1,4 +1,4 @@
-import * as modules from "/js/modules/modules.js";
+import * as modules from "./modules/modules.js";
 
 var router;
 var vm;
@@ -21,7 +21,7 @@ function initVue() {
             }),
             watch : {
             },
-            methods : {
+            methods: {
             }
         }).$mount("#app");
         resolve();

@@ -4,6 +4,7 @@ namespace network;
 abstract class getData extends \network\networkRequest{
     public $returnType = "xml";
     public $params;
+    public $clearOutput = true;
     
     function __construct() {
         $this->params = $_GET;

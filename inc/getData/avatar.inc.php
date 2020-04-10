@@ -6,9 +6,10 @@ use avatar\avatarManager;
 use user\userManagement;
 
 class avatar extends \network\getData{
+    public $clearOutput = false;
     
     public function init(){
-        $this->returnType = "none";
+        $this->returnType = "xml";
         $errors = array();
         
         if(isset($this->params["userid"])) {
@@ -27,8 +28,8 @@ class avatar extends \network\getData{
         $avatar = new avatarManager();
         
         $image = $avatar->getAvatarOfUser($this->userid);
-        header ('Content-Type: image/png');
-        imagepng($image);
+        $type = $avatar->getAvatarTypeOfUser($this->userid);
+        return array("imageData" => (string)$image, "avatarType" => $type);
     }
 }
 ?>

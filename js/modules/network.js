@@ -1,5 +1,5 @@
-import * as lang from "/js/modules/language.js";
-import * as dialogs from "/js/modules/dialogs.js";
+import * as lang from "./language.js";
+import * as dialogs from "./dialogs.js";
 
 
 function getRequest(url,parameters,type,callbackSucess,callbackFail){

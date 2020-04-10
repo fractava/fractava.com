@@ -22,4 +22,9 @@ class avatarManager {
             return $defaultAvatar->getImage();
         }
     }
+    function getAvatarTypeOfUser($id) {
+        $userManagement = new userManagement();
+        $avatar = json_decode($userManagement->findById($id)->getAttribute("avatar"), true);
+        return $avatar["type"];
+    }
 }

@@ -4,6 +4,7 @@ namespace network;
 abstract class action extends \network\networkRequest{
     public $returnType = "xml";
     public $params;
+    public $clearOutput = true;
     
     function __construct() {
         $this->params = $_POST;

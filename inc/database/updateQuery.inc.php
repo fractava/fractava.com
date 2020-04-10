@@ -74,8 +74,18 @@ class updateQuery extends databaseQuery {
         
         $sql .= "UPDATE ";
         $sql .= $this->table;
-        $sql .= " SET";
-        // TODO: INSERT SET
+        $sql .= " SET ";
+
+        for($i = 0; $i < sizeof($this->set); $i++) {
+            $sql .= $this->set[$i]["attribute"];
+            $sql .= " = :";
+            $sql .= $this->set[$i]["attribute"];
+            $sql .= " ";
+            if($i != sizeof($this->set)-1) {
+                $sql .= ", ";
+            }
+            $this->vars[$this->set[$i]["attribute"]] = $this->set[$i]["value"];
+        }
         
         if(!empty($this->conditions)){
             $sql .= "WHERE ";
@@ -131,8 +141,8 @@ class updateQuery extends databaseQuery {
         
         $this->bindVars();
         
-        //$this->statement->execute();
-        //return $this->statement->fetchAll();
+        $this->statement->execute();
+        return $this->statement->fetchAll();
     }
 }
 

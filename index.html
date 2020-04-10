@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="loading">
+    <head>
+        <!--<link rel="preload" href="/assets/fonts/thenextfont-webfont.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/timeburnerbold-webfont.woff2" as="font" type="font/woff2" crossorigin>-->
+        <!--<link rel="preload" href="/dist/main.bundle.js" as="script" crossorigin>-->
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112803937-1"></script>-->
+        
+    	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta name="description" content ="FRACTAVA - Wir entwickeln Software und Spiele">
+    	<link rel="shortcut icon" type="image/png" href="/assets/img/logo/logo_black.png"/>
+
+    	<!--<link rel="stylesheet" href="/css/style.css">
+    	<link rel="stylesheet" href="/css/desktop.css">
+    	<link rel="stylesheet" href="/css/mobile.css">-->
+
+    	<script src='/js/libaries/vue.min.js' defer></script>
+    	<script src='/js/libaries/vue-router.js' defer></script>
+    	<script src='/js/libaries/jquery.min.js' defer></script>
+    	<script src='/js/libaries/mobile-detect.js' defer></script>
+    	<script src='/js/libaries/sweetalert2.js' defer></script>
+        
+    	<script src="/dist/main.bundle.js" defer></script>
+    	
+    	<title>FRACTAVA</title>
+    </head>
+    <body style="opacity: 0;">
+    	<div id="app">
+    	   <div id="cookieAlert">
+                <p id="cookieAlertHeadline">{{ modules.language.get("cookiesAllowed") }}</p>
+                <div id="cookieAlertButtonConatainer">
+                    <button id="acceptCookiesButton" v-on:click="modules.cookieDialog.acceptCookies()" class="button whiteBackground blackBorder blackHoverBackground blackText whiteHoverText">{{ modules.language.get("yes") }}</button>
+                    <button id="declineCookiesButton" v-on:click="modules.cookieDialog.declineCookies()" class="button whiteBackground blackBorder blackHoverBackground blackText whiteHoverText">{{ modules.language.get("no") }}</button>
+                </div>
+            </div>
+            <div id="navBarContainer">
+                <router-link class="navBarItem" v-for="link in modules.vueRouter.navBarLinks" v-bind:key="link.path" v-bind:to="link.path">{{ link.title }}</router-link>
+            </div>
+            <div id="accountContainer">
+                <div id="accountContainerNotLoggedIn">
+                    <button v-on:click="modules.dialogs.registerDialog()" class="button transparentBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText" id="accountRegister">{{ modules.language.get("register") }}</button>
+                    <button v-on:click="modules.dialogs.loginDialog()" class="button whiteBorder transparentBackground whiteHoverBorder whiteHoverBackground whiteText blackHoverText" id="accountLogin">{{ modules.language.get("login") }}</button>
+                </div>
+                <div id="accountContainerLoggedIn" style="display: none;">
+                    <div id="avatar">
+                        <img v-on:click="modules.account.toggleDropdown()" id="avatarImg">
+                        <div id="avatarDropdown">
+                            <span class="textBlack textCentered" id="accountUsername"></span>
+                            <router-link class="navBarItem" to="/settings">
+                                <button id="accountSettings" class="button blackBorder transparentBackground blackHoverBorder blackHoverBackground blackText whiteHoverText">{{ modules.language.get("settings") }}</button>
+                            </router-link>
+                            <button v-on:click="modules.account.logout()" id="accountLogout" class="button blackBorder transparentBackground blackHoverBorder blackHoverBackground blackText whiteHoverText">{{ modules.language.get("logout") }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobileSidenav" class="sidenav">
+                <a href="javascript:void(0)" v-on:click="modules.sidenav.close()" id="closeMobileSidenav" class="closebtn">&times;</a>
+                <router-link class="navBarItem" v-for="link in modules.vueRouter.navBarLinks" v-bind:key="link.path" v-bind:to="link.path">
+                    <span v-on:click="modules.sidenav.close()">{{ link.title }}</span>
+                </router-link>
+            </div>
+            <div id="openMobileSidenavDiv" v-on:click="modules.sidenav.open()">
+                <svg id="openMobileSidenav" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="white" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </div>
+            <main>
+                <router-view></router-view>
+            </main>
+            <section id="footerSection">
+                <div style="padding-top: 10px;">
+                    <router-link to="/policy">{{ modules.language.get("privacyPolicy") }}</router-link>
+                    <router-link to="/impressum">{{ modules.language.get("legalNotice") }}</router-link>
+                </div>
+                <div><span style="color: white;">© FRACTAVA 2020</span></div>
+    	    </section>
+        </div>
+    </body>
+</html>

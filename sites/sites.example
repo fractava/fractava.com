@@ -1,0 +1,11 @@
+export default {
+    "example": {
+        "vue": () => import("./example/example.vue"),
+        "css": "example/example.css",
+        "title": {
+            "de-DE": "Beispiel",
+            "en-US": "Example"
+        },
+        "visibleInNavbar": false
+    }
+}

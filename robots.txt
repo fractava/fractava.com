@@ -1,5 +1,4 @@
 User-agent: *
 Disallow: /assets/
 Disallow: /sites/
-Disallow: /inc/
 Allow: /

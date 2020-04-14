@@ -7,12 +7,6 @@ if [ ! -f /.notfirststart ]; then
     rm -f -R /config/*
     mv /config-buildtime/* /config/
 
-    #rm -R /etc/nginx/*
-    #mkdir /etc/nginx/site-confs/
-    #ln -s /config/nginx/nginx.conf /etc/nginx/nginx.conf
-    #ln -s /config/nginx/mime.types /etc/nginx/mime.types
-    #ln -s /config/nginx/site-confs/default /etc/nginx/site-confs/default
-
     touch /.notfirststart
 
     ls /config/www/

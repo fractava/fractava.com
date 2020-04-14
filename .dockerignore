@@ -6,4 +6,4 @@ www/package-lock.json
 www/package.json
 www/.gitignore
 .git/*
-ci-test/*
+ci-tests/*

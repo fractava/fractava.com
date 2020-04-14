@@ -47,11 +47,7 @@ lines-of-code:
   before_script:
     - npm install -g sloc
   script:
-    - rm lines-of-code.txt
-    - echo "JS:" >> lines-of-code.txt
-    - sloc -k total,source,comment,files ./www/js >> lines-of-code.txt
-    - echo "CSS:" >> lines-of-code.txt
-    - sloc -k total,source,comment,files ./www/css >> lines-of-code.txt
+    - sh ci-tests/lines-of-code/test.sh > lines-of-code.txt
 
 size:
   allow_failure: true

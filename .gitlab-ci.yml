@@ -71,6 +71,8 @@ lines-of-code:
     - npm install -g sloc
   script:
     - sh ci-tests/lines-of-code/test.sh > lines-of-code.txt
+  only:
+    - master
 
 size:
   allow_failure: true
@@ -82,6 +84,8 @@ size:
       - size.txt
   script:
     - sh ci-tests/size/test.sh > size.txt
+  only:
+    - master
 
 docker-run:
   image: docker:19.03.1

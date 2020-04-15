@@ -1,4 +1,4 @@
 export default {
-    "getDataUrl": "backend.fractava.com/getData.php",
-    "actionUrl": "backend.fractava.com/action.php"
+    "getDataUrl": "https://backend.fractava.com/getData.php",
+    "actionUrl": "https://backend.fractava.com/action.php"
 };

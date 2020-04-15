@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-RUN mkdir -p /config-buildtime/log/nginx/
+RUN mkdir -p /config-buildtime/log/
 
 # copy everything
 COPY ./ /config-buildtime/

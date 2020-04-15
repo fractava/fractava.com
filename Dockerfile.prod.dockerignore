@@ -8,3 +8,7 @@ www/package.json
 www/.gitignore
 .git
 ci-tests
+Dockerfile.dev
+Dockerfile.dev.dockerignore
+Dockerfile.prod
+Dockerfile.prod.dockerignore

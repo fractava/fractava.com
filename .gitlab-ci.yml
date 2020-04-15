@@ -17,7 +17,7 @@ webpack-build:
   script:
     - npm run build
 
-docker-build:
+docker-build-prod:
   image: docker:19.03.1
   stage: deploy
   services:
@@ -29,12 +29,35 @@ docker-build:
   dependencies: 
     - webpack-build
   before_script:
+    - export DOCKER_BUILDKIT=1
     - docker login docker.io -u $CI_REGISTRY_USER -p "$CI_REGISTRY_PASSWORD"
   script:
-    - docker build -t $CI_REGISTRY_IMAGE .
-    - docker tag $CI_REGISTRY_IMAGE $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
-    - docker images
+    - docker build -t $CI_REGISTRY_IMAGE -f Dockerfile.prod .
+    - docker tag $CI_REGISTRY_IMAGE $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:latest
     - docker push $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE
+  only:
+    - master
+
+docker-build-dev:
+  image: docker:19.03.1
+  stage: deploy
+  services:
+    - docker:19.03.1-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+  dependencies: 
+    - webpack-build
+  before_script:
+    - export DOCKER_BUILDKIT=1
+    - docker login docker.io -u $CI_REGISTRY_USER -p "$CI_REGISTRY_PASSWORD"
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE -f Dockerfile.dev .
+    - docker tag $CI_REGISTRY_IMAGE $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
+    - docker push $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE
+  except:
+    - master
 
 lines-of-code:
   allow_failure: true

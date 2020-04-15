@@ -1,0 +1,16 @@
+FROM nginx:alpine
+
+RUN mkdir -p /config-buildtime/log/nginx/
+
+# copy everything
+COPY ./ /config-buildtime/
+
+# remove default nginx config
+RUN rm -R /etc/nginx/*
+
+# make start script executable
+RUN chmod +x /config/start.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["sh","/config/start.sh"]

@@ -1,6 +1,7 @@
 www/js/modules
 www/css
 www/sites
+www/node_modules
 www/webpack.config.js
 www/package-lock.json
 www/package.json

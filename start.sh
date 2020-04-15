@@ -6,7 +6,7 @@ if [ ! -f /.notfirststart ]; then
     rm -f -R /config/*
     mv /config-buildtime/* /config/
 
-    ln /config/nginx/custom-config-include.conf /etc/nginx/nginx.conf
+    cp /config/nginx/custom-config-include.conf /etc/nginx/nginx.conf
 
     touch /.notfirststart
 

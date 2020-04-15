@@ -8,9 +8,12 @@ COPY ./ /config-buildtime/
 # remove default nginx config
 RUN rm -R /etc/nginx/*
 
+# copy start script
+COPY start.sh /
+
 # make start script executable
-RUN chmod +x /config-buildtime/start.sh
+RUN chmod +x /start.sh
 
 EXPOSE 80
 
-ENTRYPOINT ["sh","/config/start.sh"]
+ENTRYPOINT ["sh","/start.sh"]

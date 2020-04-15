@@ -9,7 +9,7 @@ COPY ./ /config-buildtime/
 RUN rm -R /etc/nginx/*
 
 # make start script executable
-RUN chmod +x /config/start.sh
+RUN chmod +x /config-buildtime/start.sh
 
 EXPOSE 80
 

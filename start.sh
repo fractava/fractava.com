@@ -1,6 +1,6 @@
 #!/bin/bash
 
-check-if-first-start
+check-if-first-start()
 {
     if [ ! -f /.notfirststart ]; then
         echo "first Start"
@@ -9,7 +9,7 @@ check-if-first-start
     fi
 }
 
-first-start
+first-start()
 {
     if [ ! -f /config ]; then
         backup-config
@@ -27,7 +27,7 @@ first-start
     touch /.notfirststart
 }
 
-clear-config-folder
+clear-config-folder()
 {
     rm -f -R /config/*
 }

@@ -1,38 +1,38 @@
 #!/bin/bash
 
-check-if-first-start()
+checkIfFirstStart()
 {
     if [ ! -f /.notfirststart ]; then
         echo "first Start"
-        first-start
+        firstStart
         echo "first start init done"
     fi
 }
 
-first-start()
+firstStart()
 {
     if [ ! -f /config ]; then
-        backup-config
+        backupConfig
     fi
 
-    clear-config-folder
+    clearConfigFolder
 
     mv /config-buildtime/* /config/
     cp /config/nginx/custom-config-include.conf /etc/nginx/nginx.conf
 
     if [ ! -f /config-backup/ ]; then
-        copy-persistent-files-back
+        copyPersistentFilesBack
     fi
     
     touch /.notfirststart
 }
 
-clear-config-folder()
+clearConfigFolder()
 {
     rm -f -R /config/*
 }
 
-backup-config()
+backupConfig()
 {
     echo "config backup"
     mkdir /config-backup/
@@ -40,7 +40,7 @@ backup-config()
     ls /config-backup/
 }
 
-copy-persistent-files-back()
+copyPersistentFilesBack()
 {
     echo "copy-persistent-files-back"
     if [ -e /config-backup/www/config/config.json ]
@@ -48,14 +48,14 @@ copy-persistent-files-back()
     fi
 }
 
-start-nginx()
+startNginx()
 {
     echo "starting nginx ..."
     nginx
     echo "nginx start done"
 }
 
-wait-forever()
+waitForever()
 {
     while true
     do
@@ -63,6 +63,6 @@ wait-forever()
     done
 }
 
-check-if-first-start
-start-nginx
-wait-forever
+checkIfFirstStart
+startNginx
+waitForever

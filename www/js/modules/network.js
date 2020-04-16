@@ -1,6 +1,6 @@
 import * as lang from "./language.js";
 import * as dialogs from "./dialogs.js";
-config = import("./config.js");
+import * as config from "./config.js";
 
 
 function getRequest(url,parameters,type,callbackSucess,callbackFail){
@@ -26,7 +26,7 @@ function getDataRequest(parameters,retry,showError,maxRetries){
 		execute();
 
 		function request(parameters){
-			let jqxhr = $.get(config["getDataUrl"], parameters, function(data,textStatus,jqXHR){
+			let jqxhr = $.get(config.getAttribute("getDataUrl"), parameters, function(data,textStatus,jqXHR){
 				let requestReturn;
 			try{
 				xml = $(data);
@@ -103,7 +103,7 @@ function actionRequest(parameters,retry,showError,maxRetries){
 		execute();
 
 		function request(parameters){
-			let jqxhr = $.post(config["actionUrl"], parameters, function(data,textStatus,jqXHR){
+			let jqxhr = $.post(config.getAttribute("actionUrl"), parameters, function(data,textStatus,jqXHR){
 				if(xml = $(data)){
 					resolve(xml);
 				}else{

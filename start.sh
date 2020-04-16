@@ -43,7 +43,9 @@ backup-config()
 copy-persistent-files-back()
 {
     echo "copy-persistent-files-back"
-    cp /config-backup/www/js/modules/config.js /config/www/js/modules/
+    if [ -e /config-backup/www/config/config.json ]
+        cp /config-backup/www/config/config.json /config/www/config/
+    fi
 }
 
 start-nginx()

@@ -1,6 +1,6 @@
 import * as lang from "./language.js";
 import * as dialogs from "./dialogs.js";
-import config from "./config.js";
+config = import("./config.js");
 
 
 function getRequest(url,parameters,type,callbackSucess,callbackFail){

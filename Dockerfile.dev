@@ -5,7 +5,8 @@ RUN apk add npm git
 RUN mkdir -p /config-buildtime/log/
 
 # copy everything
-COPY ./ .git/ .gitignore .gitlab-ci.yml /config-buildtime/
+COPY ./ .gitignore .gitlab-ci.yml /config-buildtime/
+COPY .git/ /config-buildtime/.git/
 
 # remove default nginx config
 RUN rm -R /etc/nginx/*

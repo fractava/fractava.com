@@ -50,18 +50,9 @@ copyPersistentFilesBack()
 startNginx()
 {
     echo "starting nginx ..."
-    nginx
+    nginx &
     echo "nginx start done"
-}
-
-waitForever()
-{
-    while true
-    do
-        sleep 1
-    done
 }
 
 checkIfFirstStart
 startNginx
-waitForever

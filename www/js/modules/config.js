@@ -3,6 +3,7 @@ var config;
 function init() {
     $.get("/config/config.json")
     .then(function(data) {
+        console.log(data);
         config = data;
     });
 }

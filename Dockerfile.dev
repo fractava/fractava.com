@@ -5,7 +5,7 @@ RUN apk add npm git
 RUN mkdir -p /config-buildtime/log/
 
 # copy everything
-COPY ./ /config-buildtime/
+COPY . /config-buildtime/
 
 # remove default nginx config
 RUN rm -R /etc/nginx/*

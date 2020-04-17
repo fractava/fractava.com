@@ -55,5 +55,6 @@ startNginx()
     echo "nginx start done"
 }
 
+shopt -s dotglob
 checkIfFirstStart
 startNginx

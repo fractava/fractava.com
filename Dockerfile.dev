@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-RUN apk add npm git
+RUN apk add bash npm git
 
 RUN mkdir -p /config-buildtime/log/
 

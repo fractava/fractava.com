@@ -1,5 +1,6 @@
 import * as vueRouter from "./vueRouter.js";
 import * as vueComponents from "./vueComponents.js";
+import * as config from "./config.js";
 import * as network from "./network.js";
 import * as dialogs from "./dialogs.js";
 import * as resourceLoader from "./resourceLoader.js";
@@ -13,4 +14,4 @@ import * as language from "./language.js";
 
 import css from './../../css/style.css';
 
-export{vueComponents, vueRouter, network, dialogs, resourceLoader, cookieDialog, mobileDetect, sectionNavigation, cookies, sidenav, account, language};
+export{vueComponents, vueRouter, config, network, dialogs, resourceLoader, cookieDialog, mobileDetect, sectionNavigation, cookies, sidenav, account, language};

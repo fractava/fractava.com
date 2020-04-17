@@ -43,7 +43,8 @@ copyPersistentFilesBack()
 {
     echo "copy-persistent-files-back"
     if [ -e /config-backup/config/www/config/config.json ]; then
-        cp /config-backup/config/www/config/config.json /config/www/config/
+        mkdir /config/www/config/
+        cp /config-backup/config/www/config/config.json /config/www/config/config.json
     fi
 }
 

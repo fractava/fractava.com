@@ -17,7 +17,8 @@ firstStart()
 
     clearConfigFolder
 
-    mv /config-buildtime/. /config/
+    mv /config-buildtime/* /config/
+    mv /config-buildtime/.* /config/
     cp /config/nginx/custom-config-include.conf /etc/nginx/nginx.conf
 
     if [ ! -f /config-backup/ ]; then

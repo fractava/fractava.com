@@ -36,8 +36,7 @@ backupConfig()
 {
     echo "config backup"
     mkdir /config-backup/
-    cp -r /config/* /config-backup/
-    ls /config-backup/
+    cp -r /config/ /config-backup/
 }
 
 copyPersistentFilesBack()

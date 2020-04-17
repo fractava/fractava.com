@@ -36,7 +36,7 @@ backupConfig()
 {
     echo "config backup"
     mkdir /config-backup/
-    cp /config/* /config-backup/
+    cp -r /config/* /config-backup/
     ls /config-backup/
 }
 

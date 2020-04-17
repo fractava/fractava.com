@@ -52,7 +52,7 @@ copyPersistentFilesBack()
 startNginx()
 {
     echo "starting nginx ..."
-    nginx
+    nginx &
     echo "nginx start done"
 }
 

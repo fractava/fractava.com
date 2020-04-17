@@ -11,7 +11,7 @@ checkIfFirstStart()
 
 firstStart()
 {
-    if [ ! -f /config ]; then
+    if [ ! -f /config/www ]; then
         backupConfig
     fi
 

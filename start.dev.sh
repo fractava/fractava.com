@@ -9,14 +9,11 @@ startWebpackWatch()
     npm run watch
     echo "webpack watch initialised"
 }
-waitForever()
-{
-    echo "everything initialised"
-    while true
-    do
-        sleep 1
-    done
-}
 
 startWebpackWatch
-waitForever
+
+echo "everything initialised"
+while true
+do
+   sleep 1
+done

@@ -8,3 +8,4 @@ www/package.json
 www/.gitignore
 .git
 ci-tests
+start.dev.sh

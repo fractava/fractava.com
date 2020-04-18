@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sh ./start.sh
+sh ./start.sh $1
 
 waitForever()
 {

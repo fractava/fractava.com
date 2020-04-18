@@ -54,7 +54,7 @@ copyPersistentFilesBack()
 initGit()
 {
     if [ "$branch" != "master" ]; then
-        echo "init git"
+        echo "init git, branch $branch"
         cd /config/
         git remote set-url origin https://git.fractava.com/fractava/fractava.com.git
         git checkout $1

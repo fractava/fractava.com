@@ -1,5 +1,7 @@
 FROM nginx:alpine
 
+ARG branch
+
 RUN apk add bash npm git
 
 RUN mkdir -p /config-buildtime/log/
@@ -19,4 +21,4 @@ RUN chmod +x /start.sh
 
 EXPOSE 80
 
-ENTRYPOINT ["sh","/start.dev.sh"]
+ENTRYPOINT ["sh","/start.dev.sh",${branch}]

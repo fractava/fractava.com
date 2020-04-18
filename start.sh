@@ -53,11 +53,14 @@ copyPersistentFilesBack()
 
 initGit()
 {
-    cd /config/
-    git remote set-url origin https://git.fractava.com/fractava/fractava.com.git
-    git checkout $1
-    git reset --hard
-    git pull
+    if [ "$branch" != "master" ]; then
+        echo "init git"
+        cd /config/
+        git remote set-url origin https://git.fractava.com/fractava/fractava.com.git
+        git checkout $1
+        git reset --hard
+        git pull
+    fi
 }
 
 startNginx()

@@ -4,6 +4,7 @@ checkIfFirstStart()
 {
     if [ ! -f /.notfirststart ]; then
         echo "first Start"
+        echo "branch: $1"
         firstStart
         echo "first start init done"
     fi
@@ -24,8 +25,6 @@ firstStart()
     if [ ! -f /config-backup/ ]; then
         copyPersistentFilesBack
     fi
-
-    initGit
     
     touch /.notfirststart
 }
@@ -48,18 +47,6 @@ copyPersistentFilesBack()
     if [ -e /config-backup/config/www/config/config.json ]; then
         mkdir /config/www/config/
         cp /config-backup/config/www/config/config.json /config/www/config/config.json
-    fi
-}
-
-initGit()
-{
-    if [ "$branch" != "master" ]; then
-        echo "init git, branch $branch"
-        cd /config/
-        git remote set-url origin https://git.fractava.com/fractava/fractava.com.git
-        git checkout $1
-        git reset --hard
-        git pull
     fi
 }
 

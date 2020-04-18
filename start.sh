@@ -24,6 +24,8 @@ firstStart()
     if [ ! -f /config-backup/ ]; then
         copyPersistentFilesBack
     fi
+
+    initGit
     
     touch /.notfirststart
 }
@@ -47,6 +49,15 @@ copyPersistentFilesBack()
         mkdir /config/www/config/
         cp /config-backup/config/www/config/config.json /config/www/config/config.json
     fi
+}
+
+initGit()
+{
+    cd /config/
+    git remote set-url origin https://git.fractava.com/fractava/fractava.com.git
+    git checkout $1
+    git reset --hard
+    git pull
 }
 
 startNginx()

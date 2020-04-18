@@ -26,21 +26,30 @@ function getDataRequest(parameters,retry,showError,maxRetries){
 		execute();
 
 		function request(parameters){
-			let jqxhr = $.get(config.getAttribute("getDataUrl"), parameters, function(data,textStatus,jqXHR){
+		    let jqxhr = $.ajax({
+              url: config.getAttribute("getDataUrl"),
+              method: "GET",
+              data: parameters,
+              dataType: "xml",
+              xhrFields: {
+                withCredentials: true
+              },
+              success: function(data) {
 				let requestReturn;
-			try{
-				xml = $(data);
-				if(xml.length > 0){
-					requestReturn = xml;
-				}else{
-					requestReturn = data;
-				}
-			}catch(e){
-				requestReturn = data;
+    			try{
+    				xml = $(data);
+    				if(xml.length > 0){
+    					requestReturn = xml;
+    				}else{
+    					requestReturn = data;
+    				}
+    			}catch(e){
+    				requestReturn = data;
+    			}
+    			resolve(requestReturn);
 			}
-			resolve(requestReturn);
-				//sucess(data,textStatus,xml);
 			});
+			
 			jqxhr.fail(function(jqXHR,exception){
 				fail(jqXHR, exception);
 			});
@@ -103,13 +112,22 @@ function actionRequest(parameters,retry,showError,maxRetries){
 		execute();
 
 		function request(parameters){
-			let jqxhr = $.post(config.getAttribute("actionUrl"), parameters, function(data,textStatus,jqXHR){
+		    let jqxhr = $.ajax({
+              url: config.getAttribute("actionUrl"),
+              method: "POST",
+              data: parameters,
+              dataType: "xml",
+              xhrFields: {
+                withCredentials: true
+              },
+              success: function(data) {
 				if(xml = $(data)){
 					resolve(xml);
 				}else{
 					resolve(data);
 				}
 				//sucess(data,textStatus,xml);
+			}
 			});
 			jqxhr.fail(function(jqXHR,exception){
 				fail(jqXHR, exception);

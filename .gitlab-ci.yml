@@ -102,3 +102,9 @@ docker-run:
     - docker pull fractava/fractava.com:$CI_COMMIT_BRANCH
     - docker run -d --rm --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' fractava/fractava.com:$CI_COMMIT_BRANCH
     
+include:
+  - template: Code-Quality.gitlab-ci.yml
+
+code_quality:
+  artifacts:
+    paths: [gl-code-quality-report.json]

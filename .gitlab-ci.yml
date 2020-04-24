@@ -101,10 +101,63 @@ docker-run:
   script:
     - docker pull fractava/fractava.com:$CI_COMMIT_BRANCH
     - docker run -d --rm --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' fractava/fractava.com:$CI_COMMIT_BRANCH
-    
-include:
-  - template: Code-Quality.gitlab-ci.yml
 
 code_quality:
+  stage: test
+  image: docker:19.03.8
+  allow_failure: true
+  services:
+    - docker:19.03.8-dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+    CODE_QUALITY_IMAGE: "registry.gitlab.com/gitlab-org/ci-cd/codequality:0.85.9"
+  script:
+    - |
+      if ! docker info &>/dev/null; then
+        if [ -z "$DOCKER_HOST" -a "$KUBERNETES_PORT" ]; then
+          export DOCKER_HOST='tcp://localhost:2375'
+        fi
+      fi
+    - docker pull --quiet "$CODE_QUALITY_IMAGE"
+    - docker run
+        --env SOURCE_CODE="$PWD/www/"
+        --volume "$PWD/www":/code
+        --volume /var/run/docker.sock:/var/run/docker.sock
+        "$CODE_QUALITY_IMAGE" /code
   artifacts:
-    paths: [gl-code-quality-report.json]
+    reports:
+      codequality: gl-code-quality-report.json
+    expire_in: 1 week
+  dependencies: []
+  only:
+    refs:
+      - branches
+      - tags
+
+performance:
+  stage: test
+  image: docker:git
+  variables:
+    URL: http://localhost:800
+    SITESPEED_VERSION: 11.2.0
+    SITESPEED_OPTIONS: ''
+  services:
+    - docker:stable-dind
+  before_script:
+    - docker volume create config
+    - docker pull fractava/fractava.com:$CI_COMMIT_BRANCH
+    - docker run -d --rm --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' fractava/fractava.com:$CI_COMMIT_BRANCH
+  script:
+    - netstat -tulpn
+    - mkdir gitlab-exporter
+    - wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
+    - mkdir sitespeed-results
+    - docker run --shm-size=1g --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io:$SITESPEED_VERSION --plugins.add ./gitlab-exporter --outputFolder sitespeed-results $URL $SITESPEED_OPTIONS
+    - mv sitespeed-results/data/performance.json performance.json
+  artifacts:
+    paths:
+      - performance.json
+      - sitespeed-results/
+    reports:
+      performance: performance.json

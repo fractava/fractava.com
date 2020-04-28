@@ -141,6 +141,8 @@ performance:
   image: docker:git
   variables:
     URL: http://localhost:800
+    OCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
     SITESPEED_VERSION: 11.2.0
     SITESPEED_OPTIONS: ''
   services:

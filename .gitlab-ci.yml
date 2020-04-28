@@ -33,6 +33,7 @@ docker-build-prod:
     - docker login docker.io -u $CI_REGISTRY_USER -p "$CI_REGISTRY_PASSWORD"
   script:
     - docker build --build-arg branch=master -t $CI_REGISTRY_IMAGE -f Dockerfile.prod .
+    - docker tag $CI_REGISTRY_IMAGE $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
     - docker tag $CI_REGISTRY_IMAGE $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:latest
     - docker push $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE
   only:
@@ -152,6 +153,7 @@ performance:
     - docker pull fractava/fractava.com:$CI_COMMIT_BRANCH
     - docker run -d --rm --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' fractava/fractava.com:$CI_COMMIT_BRANCH
   script:
+    - docker ps -a
     - netstat -tulpn
     - mkdir gitlab-exporter
     - wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js

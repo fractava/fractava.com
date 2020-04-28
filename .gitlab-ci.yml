@@ -100,8 +100,8 @@ docker-run:
   before_script:
     - docker volume create config
   script:
-    - docker pull fractava/fractava.com:$CI_COMMIT_BRANCH
-    - docker run -d --rm --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' fractava/fractava.com:$CI_COMMIT_BRANCH
+    - docker pull $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
+    - docker run -d --rm --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
 
 code_quality:
   stage: test
@@ -150,11 +150,13 @@ performance:
     - docker:stable-dind
   before_script:
     - docker volume create config
-    - docker pull fractava/fractava.com:$CI_COMMIT_BRANCH
-    - docker run -d --rm --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' fractava/fractava.com:$CI_COMMIT_BRANCH
+    - docker pull $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
+    - docker run -d --rm --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
   script:
+    - sleep 10
     - docker ps -a
     - netstat -tulpn
+    - curl http://localhost:800
     - mkdir gitlab-exporter
     - wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
     - mkdir sitespeed-results

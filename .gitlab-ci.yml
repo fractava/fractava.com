@@ -156,7 +156,6 @@ performance:
     - sleep 10
     - docker ps -a
     - netstat -tulpn
-    - curl http://localhost:800
     - mkdir gitlab-exporter
     - wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
     - mkdir sitespeed-results

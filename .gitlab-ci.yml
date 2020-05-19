@@ -141,7 +141,7 @@ performance:
   stage: test
   image: docker:19.03.1
   variables:
-    URL: http://localhost:800
+    URL: http://localhost:80
     OCKER_DRIVER: overlay2
     DOCKER_TLS_CERTDIR: ""
     SITESPEED_VERSION: 11.2.0
@@ -151,7 +151,7 @@ performance:
   before_script:
     - docker volume create config
     - docker pull $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
-    - docker run -d --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
+    - docker run -d --name='WebserverTest' --network="host" -e TZ="Europe/Berlin" -v config:'/config' $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
   script:
     - sleep 10
     - docker ps -a
@@ -159,7 +159,7 @@ performance:
     - mkdir gitlab-exporter
     - wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
     - mkdir sitespeed-results
-    - docker run --shm-size=1g --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io:$SITESPEED_VERSION --plugins.add ./gitlab-exporter --outputFolder sitespeed-results $URL $SITESPEED_OPTIONS
+    - docker run --shm-size=1g --rm --network="host" -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io:$SITESPEED_VERSION --plugins.add ./gitlab-exporter --outputFolder sitespeed-results $URL $SITESPEED_OPTIONS
     - mv www/sitespeed-results/data/performance.json performance.json
     - ls ./
     - ls www/

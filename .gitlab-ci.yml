@@ -139,7 +139,7 @@ code_quality:
 
 performance:
   stage: test
-  image: docker:git
+  image: docker:19.03.1
   variables:
     URL: http://localhost:800
     OCKER_DRIVER: overlay2
@@ -151,7 +151,7 @@ performance:
   before_script:
     - docker volume create config
     - docker pull $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
-    - docker run -d --rm --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
+    - docker run -d --name='WebserverTest' --net='bridge' -e TZ="Europe/Berlin" -p '800:80/tcp' -v config:'/config' $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
   script:
     - sleep 10
     - docker ps -a

@@ -160,12 +160,11 @@ performance:
     - wget -O ./gitlab-exporter/index.js https://gitlab.com/gitlab-org/gl-performance/raw/master/index.js
     - mkdir sitespeed-results
     - docker run --shm-size=1g --rm --network="host" -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io:$SITESPEED_VERSION --plugins.add ./gitlab-exporter --outputFolder sitespeed-results $URL $SITESPEED_OPTIONS
-    #- mv www/sitespeed-results/data/performance.json performance.json
+    - mv sitespeed-results/data/performance.json performance.json
     - ls -la ./
-    - ls -la www/
   artifacts:
     paths:
       - performance.json
-      - www/sitespeed-results/
+      - sitespeed-results/
     reports:
       performance: performance.json
